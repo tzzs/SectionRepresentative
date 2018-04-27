@@ -1,14 +1,10 @@
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.RequestContext;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Part;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collection;
-import java.util.List;
 
 @WebServlet(name = "uploadServlet", urlPatterns = "/uploadServlet")
 @MultipartConfig
@@ -38,9 +34,15 @@ public class uploadServlet extends javax.servlet.http.HttpServlet {
                     String path = getServletContext().getRealPath("/WEB-INF") + "/FILE";//文件夹路径
                     File filePath = new File(path);
                     if (!filePath.exists()) {
-                        filePath.mkdirs();
+                        if (!filePath.mkdirs()) {
+                            out.println("<p>文件储存地址创建失败</p>");
+                            return;
+                        }
                     }
                     path = path + "/" + fileName;//文件路径
+                    //将作业信息  文件地址  存入数据库
+
+
                     part.write(path);
                     out.println(path);
                     out.println("<br>Uploaded file name: " + fileName);

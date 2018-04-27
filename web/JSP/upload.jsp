@@ -18,7 +18,6 @@
     <input type="reset" value="重置"><br>
     <input type="submit" value="上传">
 
-
 </form>
 </body>
 </html>
