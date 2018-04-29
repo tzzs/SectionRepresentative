@@ -43,6 +43,7 @@ public class uploadServlet extends javax.servlet.http.HttpServlet {
                     //将作业信息  文件地址  存入数据库
 
 
+
                     part.write(path);
                     out.println(path);
                     out.println("<br>Uploaded file name: " + fileName);

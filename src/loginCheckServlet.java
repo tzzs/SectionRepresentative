@@ -2,7 +2,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.net.HttpCookie;
+//import userDao;
+
 
 @WebServlet(name = "loginCheckServlet")
 public class loginCheckServlet extends HttpServlet {
@@ -19,6 +20,15 @@ public class loginCheckServlet extends HttpServlet {
         String account = request.getParameter("account");
         String password = request.getParameter("password");
         String[] remember = request.getParameterValues("remember");
+
+
+
+//        String pwd = ;
+        userDao ud = new userDao();
+//        List<User> userList = ud.select(account);
+        User user = ud.select(account);
+
+
 
         //获取服务器账号密码 对比
         if (account.equals("") && password.equals("")) {

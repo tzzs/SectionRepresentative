@@ -1,14 +1,15 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="N:war exploded">
-    <output-path>D:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/N</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="N/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="N" />
+          <element id="library" level="project" name="N" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="lib" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/ibatis-sqlmap-3.0-beta-4.jar" />
         </element>
       </element>
     </root>
