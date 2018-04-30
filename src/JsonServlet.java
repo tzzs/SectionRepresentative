@@ -38,14 +38,8 @@ public class JsonServlet extends HttpServlet {
         //m.put("u2", u2);
 //        JSONArray jsonArray2 = JSONArray.fromObject(list);//转化成json对象
         JSONArray jsonArray = JSONArray.fromObject(list);
-        String json = "{\"id\":\"123\",\"name\":\"小黎\"}";
-        //JSONObject jo=JSONObject.fromObject(m);//转化Map对象
-//        System.out.println("json:" + jsonArray2.toString());
-        out.print(jsonArray);
+        out.print(jsonArray);//返给ajax请求;
         System.out.println(jsonArray.toString());
-//        out.write(json);
-//        out.print(jsonArray2);//返给ajax请求;
-        //out.print(jo);//返给ajax请求
         out.close();
     }
 }
