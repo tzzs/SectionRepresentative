@@ -1,0 +1,62 @@
+@charset "UTF-8";
+.main{
+	width:100%;
+	height:540px;
+	background-color: #CCE4FF;
+	position: relative;
+}
+.load-main{
+	z-index:9998;
+	position:absolute;
+	width:300px;
+	height: 230px;
+	top:50%;
+	left:50%;
+	margin-top:-115px;
+	margin-left:-150px;
+}
+.load-main .load_form{
+	background-color:#FEFEFE;
+	width:300px;
+	height: 220px;
+	text-align: center;
+	border: solid 1px #CAD4D3 ; 
+	border-radius: 5px;
+}
+.load_form h1{
+	margin-top: 10px;
+	color: #627F8C;
+	margin-bottom: 10px;
+}
+.load_form input{
+	margin-top:10px;
+	height:30px;
+	width:250px;
+}
+#usenum{
+	margin-top: -10px;
+}
+.load.btn{
+	background-color: #007AFF;
+	width:255px;
+	border:none;
+	border-radius: 4px;
+	height: 35px;
+	margin-top: 10px;
+	color: white;
+	font-size:16px;
+}
+.load_form div{
+	margin-top: 10px;
+	margin-left: 21px;
+}
+.load_form div a{
+	text-decoration: none;
+	display: block;
+	color: #007AFF;
+	float:left;
+	font-size: 10px;
+}
+.regist {
+	margin-left: 145px;
+}
