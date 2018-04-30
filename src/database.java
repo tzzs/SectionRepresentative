@@ -13,8 +13,6 @@ public class database {
 
     public database(String url) {
         this.url = url;
-//        this.sql = sql;, String sql, String[] pram
-//        this.pram = pram;
     }
 
 

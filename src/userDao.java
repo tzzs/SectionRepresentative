@@ -12,7 +12,7 @@ public class userDao {
 
 
     public void init() {
-        connection = new jdbc("aaa").getConnection();
+        connection = new jdbc("\"jdbc:mysql://localhost:3306/sectionRepresentative?useUnicode=true&useSSL=false&characterEncoding=UTF-8\"").getConnection();
     }
 
     public void add(User user) {
@@ -68,7 +68,6 @@ public class userDao {
     }
 
     public User select(String account) {
-//        List<User> userList = new ArrayList<User>();
         init();
         User user = new User();
         String sql = "select * from user where account=?";
@@ -84,7 +83,6 @@ public class userDao {
                 user.setEmail(rs.getString(5));
                 user.setSchool(rs.getString(6));
                 user.setIdentity(rs.getBoolean(7));
-//                userList.add(user);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -93,7 +91,7 @@ public class userDao {
     }
 
     public List<User> selectAll(String account) {
-        List<User> userList = new ArrayList<User>();
+        List<User> userList = new ArrayList<>();
         init();
         String sql = "select * from user where account=?";
         try {
