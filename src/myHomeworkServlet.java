@@ -1,4 +1,4 @@
-import net.sf.json.JSONArray;
+//import net.sf.json.JSONArray;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,9 +21,9 @@ public class myHomeworkServlet extends HttpServlet {
                 homeworkDao hd = new homeworkDao();
                 List<Homework> homeworkList = hd.selectAll(account);
 
-                JSONArray json = JSONArray.fromObject(homeworkList);
-                out.print(json);
-                System.out.println(json);
+//                JSONArray json = JSONArray.fromObject(homeworkList);
+//                out.print(json);
+//                System.out.println(json);
                 return;
             }
         }

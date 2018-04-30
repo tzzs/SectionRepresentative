@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>showJson</title>
-    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/JS/jquery-1.4.1.min.js"></script>
     <script type="text/javascript">
         function test() {
             $.ajax({
@@ -18,15 +18,17 @@
                 cache: false,
                 data: "name=zah",
                 //传参
-                dataType: 'json',//返回值类型
+                dataType: 'text',//返回值类型
                 success: function (json) {
-                    alert(json[1].username + " " + json[1].password);//弹出返回过来的List对象
+                    alert(json);
+                    // alert(json[1].username + " " + json[1].password);//弹出返回过来的List对象
                 }
             });
+            document.write("aaa")
         }
     </script>
 </head>
 <body>
-<input type="button" name="b" value="测试" onclick="test()">
+<input type="button" name="b" value="测试" onclick="test();">
 </body>
 </html>
