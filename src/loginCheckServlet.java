@@ -31,6 +31,7 @@ public class loginCheckServlet extends HttpServlet {
 //                Cookie newCookie = new Cookie("remember", "true");
 //            }
             Cookie cookie = new Cookie("account", user.getAccount());
+            response.addCookie(cookie);
             response.sendRedirect("html/main.html");
         } else {
             request.getRequestDispatcher("html/index.html");

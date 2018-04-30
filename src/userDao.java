@@ -55,9 +55,16 @@ public class userDao {
     public void update(User user) {
         try {
             init();
-            String sql = "update user set password=?,name=?,attention=?,email=?,school=?,identity=?";
+            String sql = "update user set password=?,name=?,attention=?,email=?,school=?,identity=? where accout=?";
             ps = connection.prepareStatement(sql);
             ps.setString(1, user.getPassword());
+            ps.setString(2, user.getName());
+            ps.setString(3, user.getAttention());
+            ps.setString(4, user.getEmail());
+            ps.setString(5, user.getSchool());
+            ps.setBoolean(6, user.isIdentity());
+            ps.setString(7, user.getAccount());
+
             //ps
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -112,5 +119,31 @@ public class userDao {
             e.printStackTrace();
         }
         return userList;
+    }
+
+    public void close() {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (ps != null) {
+                    try {
+                        ps.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (connection != null) {
+                            try {
+                                connection.commit();
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
