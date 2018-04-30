@@ -11,6 +11,8 @@
     <title>showJson</title>
     <script type="text/javascript" src="/JS/jquery-1.4.1.min.js"></script>
     <script type="text/javascript">
+        var J;
+
         function test() {
             $.ajax({
                 type: "POST", //请求方式
@@ -18,17 +20,24 @@
                 cache: false,
                 data: "name=zah",
                 //传参
-                dataType: 'text',//返回值类型
+                dataType: 'json',//返回值类型
                 success: function (json) {
-                    alert(json);
-                    // alert(json[1].username + " " + json[1].password);//弹出返回过来的List对象
+                    // alert(json);
+                    alert(json[0].account + " " + json[0].password);//弹出返回过来的List对象
+                    J = json;
                 }
             });
+        }
+
+        function out() {
             document.write("aaa")
+            document.write(J[1].account)
+            document.write(J[1].password)
         }
     </script>
 </head>
 <body>
 <input type="button" name="b" value="测试" onclick="test();">
+<input type="button" name="a" value="测试" onclick="out();">
 </body>
 </html>
