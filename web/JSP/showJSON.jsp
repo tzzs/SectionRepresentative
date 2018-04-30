@@ -30,9 +30,9 @@
         }
 
         function out() {
-            document.write("aaa")
-            document.write(J[1].account)
-            document.write(J[1].password)
+            document.writeln("aaa")
+            document.writeln(J[1].account)
+            document.writeln(J[1].password)
         }
     </script>
 </head>

@@ -31,7 +31,7 @@ public class addAttentionServlet extends HttpServlet {
         String attentions = user.getAttention();
         attentions += ";" + attention;
         user.setAttention(attentions);
-        ud.update(user);
+        ud.update(user);//更新关注人
         ud.close();
     }
 
