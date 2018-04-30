@@ -22,6 +22,7 @@ public class jdbc {
             connection = DriverManager.getConnection(url, usr, pwd);
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("getConnection faild");
         }
         return connection;
     }

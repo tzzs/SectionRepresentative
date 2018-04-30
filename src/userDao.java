@@ -12,7 +12,7 @@ public class userDao {
 
 
     public void init() {
-        connection = new jdbc("\"jdbc:mysql://localhost:3306/sectionRepresentative?useUnicode=true&useSSL=false&characterEncoding=UTF-8\"").getConnection();
+        connection = new jdbc("jdbc:mysql://localhost:3306/sectionrepresentative?useUnicode=true&useSSL=false&characterEncoding=UTF-8").getConnection();
     }
 
     public void add(User user) {
@@ -76,7 +76,7 @@ public class userDao {
             ps.setString(1, account);
             rs = ps.executeQuery();
             while (rs.next()) {
-
+                user.setAccount(rs.getString(1));
                 user.setPassword(rs.getString(2));
                 user.setName(rs.getString(3));
                 user.setAttention(rs.getString(4));

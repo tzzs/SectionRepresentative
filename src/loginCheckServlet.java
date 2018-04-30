@@ -5,7 +5,7 @@ import java.io.IOException;
 //import userDao;
 
 
-@WebServlet(name = "loginCheckServlet")
+@WebServlet(name = "loginCheckServlet", urlPatterns = "/loginCheckServlet")
 public class loginCheckServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -19,7 +19,7 @@ public class loginCheckServlet extends HttpServlet {
 
         String account = request.getParameter("account");
         String password = request.getParameter("password");
-        String[] remember = request.getParameterValues("remember");
+//        String[] remember = request.getParameterValues("remember");
 
         userDao ud = new userDao();
         User user = ud.select(account);
@@ -27,9 +27,10 @@ public class loginCheckServlet extends HttpServlet {
 
         //获取服务器账号密码 对比
         if (password.equals(user.getPassword())) {
-            if (remember[0].equals("remember")) {
-                Cookie newCookie = new Cookie("remember", "true");
-            }
+//            if (remember.equals("remember")) {
+//                Cookie newCookie = new Cookie("remember", "true");
+//            }
+            Cookie cookie = new Cookie("account", user.getAccount());
             response.sendRedirect("html/main.html");
         } else {
             request.getRequestDispatcher("html/index.html");
