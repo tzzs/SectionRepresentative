@@ -55,7 +55,7 @@ public class userDao {
     public void update(User user) {
         try {
             init();
-            String sql = "update user set password=?,name=?,attention=?,email=?,school=?,identity=? where accout=?";
+            String sql = "update user set password=?,name=?,attention=?,email=?,school=?,identity=? where account=?";
             ps = connection.prepareStatement(sql);
             ps.setString(1, user.getPassword());
             ps.setString(2, user.getName());

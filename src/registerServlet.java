@@ -1,5 +1,6 @@
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,10 @@ public class registerServlet extends HttpServlet {
             userDao ud = new userDao();
             ud.add(user);
             ud.close();
+            //
+            Cookie cookie = new Cookie("account",user.getAccount());
+            response.addCookie(cookie);
+            response.sendRedirect("html/main.html");
         }else{
             response.sendRedirect("html/register.html");
         }

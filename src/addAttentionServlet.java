@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "addAttentionServlet")
+@WebServlet(name = "addAttentionServlet", urlPatterns = "/addAttentionServlet")
 public class addAttentionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String attention = request.getParameter("attention");
@@ -33,6 +33,7 @@ public class addAttentionServlet extends HttpServlet {
         user.setAttention(attentions);
         ud.update(user);//更新关注人
         ud.close();
+        response.sendRedirect("html/add.html");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

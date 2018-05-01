@@ -12,7 +12,6 @@
     <script type="text/javascript" src="/JS/jquery-1.4.1.min.js"></script>
     <script type="text/javascript">
         var J;
-
         function test() {
             $.ajax({
                 type: "POST", //请求方式
@@ -29,9 +28,9 @@
         }
 
         function out() {
-            document.writeln("aaa")
-            document.writeln(J[1].account)
-            document.writeln(J[1].password)
+            document.writeln("aaa");
+            document.writeln(J[1].account);
+            document.writeln(J[1].password);
         }
     </script>
 </head>

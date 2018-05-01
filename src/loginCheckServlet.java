@@ -29,7 +29,7 @@ public class loginCheckServlet extends HttpServlet {
             Cookie cookie = new Cookie("account", user.getAccount());
             cookie.setMaxAge(0);//清除cookie
             response.addCookie(cookie);
-            request.getRequestDispatcher("html/index.html");
+            response.sendRedirect("html/index.html");
 //            session.setAttribute("loginInfo", "账号或密码输入错误，请重新登录");
         }
     }

@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(filterName = "loginFilter")//,urlPatterns = "/html/index.html"
+@WebFilter(filterName = "loginFilter")//, urlPatterns = "/*"
 public class loginFilter implements Filter {
     public void destroy() {
     }
@@ -15,22 +15,16 @@ public class loginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
         System.out.println("filter");
         Cookie[] cookies = request.getCookies();
-
-        if (cookies == null) {
-            System.out.println("index.html");
-            response.sendRedirect("index.html");
-            chain.doFilter(req, resp);
-        } else {
-            for (Cookie cookie : cookies) {
-                System.out.println(cookie.getName());
-                if (cookie.getName().equals("account")) {
-                    System.out.println("main.html");
-                    response.sendRedirect("main.html");
-                }
+        for (Cookie cookie : cookies) {
+            System.out.println(cookie.getName());
+            if (cookie.getName().equals("account")) {
+                chain.doFilter(req, resp);
+                return;
             }
-            chain.doFilter(req, resp);
-            destroy();
         }
+        response.sendRedirect("index.html");
+        chain.doFilter(req, resp);
+
     }
 
     public void init(FilterConfig config) throws ServletException {
