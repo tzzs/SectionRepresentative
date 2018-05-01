@@ -1,3 +1,5 @@
+import net.sf.json.JSONArray;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -8,7 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "myHomeworkServlet")
+@WebServlet(name = "myHomeworkServlet", urlPatterns = "/myHomeworkServlet")
 public class myHomeworkServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cookie[] cookies = request.getCookies();
@@ -19,13 +21,14 @@ public class myHomeworkServlet extends HttpServlet {
                 homeworkDao hd = new homeworkDao();
                 List<Homework> homeworkList = hd.selectAll(account);
 
-//                JSONArray json = JSONArray.fromObject(homeworkList);
-//                out.print(json);
-//                System.out.println(json);
+                JSONArray json = JSONArray.fromObject(homeworkList);
+                out.print(json);
+                System.out.println(json);
+                out.close();
                 return;
             }
         }
-        response.sendRedirect("html/index.html");
+        response.sendRedirect("html/index.html");//没找到关于account的cookie就退出
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -19,8 +19,8 @@ public class JsonServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("jsonServlet");
         response.setContentType("text/html");
-        String str = request.getParameter("name");//得到ajax传递过来的paramater
-        System.out.println(str);
+//        String str = request
+
         PrintWriter out = response.getWriter();
         List<User> list = new ArrayList<>();//传递List
         //Map m=new HashMap();//传递Map

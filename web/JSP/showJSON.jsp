@@ -18,8 +18,7 @@
                 type: "POST", //请求方式
                 url: "/JsonServlet",//请求路径
                 cache: false,
-                data: "name=zah",
-                //传参
+                data: "",//传参
                 dataType: 'json',//返回值类型
                 success: function (json) {
                     // alert(json);

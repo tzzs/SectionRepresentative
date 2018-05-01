@@ -1,35 +1,19 @@
 function get() {
-    function showJson() {
-        var test;
-        if (window.XMLHttpRequest) {
-            test = new XMLHttpRequest();
-        } else if (window.ActiveXObject) {
-            test = new window.ActiveXObject();
-        } else {
-            alert("请升级至最新版本的浏览器");
+    var J;
+    $.ajax({
+        type: "POST", //请求方式
+        url: "/JsonServlet",//请求路径
+        cache: false,
+        data: "",//传参
+        dataType: 'json',//返回值类型
+        success: function (json) {
+            // alert(json);
+            // alert(json[0].account + " " + json[0].password);//弹出返回过来的List对象
+            J = json;
         }
-        if (test != null) {
-            test.open("GET", "json", true);
-            test.send(null);
-            test.onreadystatechange = function () {
-                if (test.readyState == 4 && test.status == 200) {
-                    var obj = JSON.parse(test.responseText);
-                    for (var name in obj) {
-                        alert(obj[name].key);
-                    }
-                }
-            };
+    });
 
-        }
-    }
 
-    var xhr;
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            var json = JSON.parse(xhr.response);
-            if (json.success) {
-                document.getElementById("is")
-            }
-        }
-    }
 }
+
+window.showJson();
