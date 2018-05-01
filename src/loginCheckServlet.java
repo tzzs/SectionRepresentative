@@ -11,11 +11,6 @@ public class loginCheckServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         Cookie[] cookies = request.getCookies();
-//        for (Cookie cookie : cookies) {
-//            if (cookie.getName().equals("remember") && cookie.getValue().equals("true")) {
-//                //无需登录
-//            }
-//        }
 
         String account = request.getParameter("account");
         String password = request.getParameter("password");
@@ -27,15 +22,15 @@ public class loginCheckServlet extends HttpServlet {
 
         //获取服务器账号密码 对比
         if (password.equals(user.getPassword())) {
-//            if (remember.equals("remember")) {
-//                Cookie newCookie = new Cookie("remember", "true");
-//            }
             Cookie cookie = new Cookie("account", user.getAccount());
             response.addCookie(cookie);
             response.sendRedirect("html/main.html");
         } else {
+            Cookie cookie = new Cookie("account", user.getAccount());
+            cookie.setMaxAge(0);//清除cookie
+            response.addCookie(cookie);
             request.getRequestDispatcher("html/index.html");
-            session.setAttribute("loginInfo", "账号或密码输入错误，请重新登录");
+//            session.setAttribute("loginInfo", "账号或密码输入错误，请重新登录");
         }
     }
 
