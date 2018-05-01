@@ -126,4 +126,30 @@ public class homeworkDao {
         }
         return homeworkList;
     }
+
+    public void close() {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (ps != null) {
+                    try {
+                        ps.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (connection != null) {
+                            try {
+                                connection.commit();
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
