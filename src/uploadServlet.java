@@ -28,19 +28,32 @@ public class uploadServlet extends javax.servlet.http.HttpServlet {
         PrintWriter out = response.getWriter();
 
         String hno = request.getParameter("hno");
+        System.out.println("hno:" + hno);
         homeworkDao hd = new homeworkDao();
         Homework homework = hd.select(hno);
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
+            System.out.println("cookies");
             if (cookie.getName().equals("account")) {
                 String account = cookie.getValue();
-
+                System.out.println(account);
                 Collection<Part> parts = request.getParts();
+                if (parts == null) {
+                    System.out.println("null");
+                }
+                System.out.println("parts");
                 for (Part part : parts) {
+                    System.out.println("part:" + getFilename(part));
                     if (part.getContentType() != null) {
                         String fileName = getFilename(part);
+                        System.out.println("filename:" + fileName);
                         if (fileName != null && !fileName.isEmpty()) {
                             String path = getServletContext().getRealPath("/WEB-INF") + "/FILE";//文件夹路径
+                            if (homework.getHdir().substring(0, 1).equals("/")) {
+                                path = path + homework.getHdir();//文件路径
+                            } else {
+                                path = path + "/" + homework.getHdir();//文件路径
+                            }
                             File filePath = new File(path);
                             if (!filePath.exists()) {
                                 if (!filePath.mkdirs()) {
@@ -48,11 +61,7 @@ public class uploadServlet extends javax.servlet.http.HttpServlet {
                                     return;
                                 }
                             }
-                            if (homework.getHdir().substring(0, 1).equals("/")) {
-                                path = path + homework.getHdir() + "/" + fileName;//文件路径
-                            } else {
-                                path = path + "/" + homework.getHdir() + "/" + fileName;//文件路径
-                            }
+                            path = path + "/" + fileName;//文件路径
                             //将作业信息  文件地址  存入数据库
 
                             myFile mf = new myFile();
@@ -64,7 +73,8 @@ public class uploadServlet extends javax.servlet.http.HttpServlet {
                             fd.add(mf);
 
                             part.write(path);
-                            out.println(path);
+//                            out.println(path);
+                            out.println("上传完成");
                             out.println("<br>Uploaded file name: " + fileName);
                             out.println("<br>Size:" + part.getSize() / 1024 + " KB");
 
@@ -76,9 +86,6 @@ public class uploadServlet extends javax.servlet.http.HttpServlet {
                         out.println("<br>" + partName + ":" + filedValue);
                     }
                 }
-
-
-                out.close();
                 return;
             }
         }

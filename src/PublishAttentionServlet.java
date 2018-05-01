@@ -78,7 +78,6 @@ public class PublishAttentionServlet extends HttpServlet {
                 file.mkdirs();
             }
 
-            hd.close();
         }
         response.sendRedirect("html/publish.html");
     }
