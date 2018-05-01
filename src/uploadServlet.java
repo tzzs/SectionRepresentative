@@ -26,6 +26,10 @@ public class uploadServlet extends javax.servlet.http.HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
+        String hno = request.getParameter("hno");
+        homeworkDao hd = new homeworkDao();
+        Homework homework = hd.select(hno);
+
         Collection<Part> parts = request.getParts();
         for (Part part : parts) {
             if (part.getContentType() != null) {
@@ -39,15 +43,15 @@ public class uploadServlet extends javax.servlet.http.HttpServlet {
                             return;
                         }
                     }
-                    path = path + "/" + fileName;//文件路径
+                    path = path + homework.getHdir() + "/" + fileName;//文件路径
                     //将作业信息  文件地址  存入数据库
-
-
 
                     part.write(path);
                     out.println(path);
                     out.println("<br>Uploaded file name: " + fileName);
                     out.println("<br>Size:" + part.getSize() / 1024 + " KB");
+
+                    out.println("<p>点击返回，<a href=\"html/my.html\">我的作业...</a></p>");
                 }
             } else {
                 String partName = part.getName();
