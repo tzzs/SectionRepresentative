@@ -33,7 +33,7 @@ public class PublishAttentionServlet extends HttpServlet {
         if (account != null) {
             Homework homework = new Homework();
 
-            DateFormat format = new SimpleDateFormat("yyyy-MM-dd-hh-ss");
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd-hh:ss");
 
             String hno = request.getParameter("hno");
             String content = request.getParameter("hcontent");

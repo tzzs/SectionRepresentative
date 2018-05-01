@@ -46,6 +46,9 @@ public class uploadServlet extends javax.servlet.http.HttpServlet {
                     path = path + homework.getHdir() + "/" + fileName;//文件路径
                     //将作业信息  文件地址  存入数据库
 
+                    myFile mf = new myFile();
+
+
                     part.write(path);
                     out.println(path);
                     out.println("<br>Uploaded file name: " + fileName);
