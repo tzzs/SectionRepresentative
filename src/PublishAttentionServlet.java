@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -16,22 +18,7 @@ import java.util.ArrayList;
  */
 @WebServlet(name = "publishServlet", urlPatterns = "/publishServlet")
 public class PublishAttentionServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PublishAttentionServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    @SuppressWarnings({"unchecked", "unused"})
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
@@ -46,13 +33,29 @@ public class PublishAttentionServlet extends HttpServlet {
         if (account != null) {
             Homework homework = new Homework();
 
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd-hh-ss");
+
             String hno = request.getParameter("hno");
             String content = request.getParameter("hcontent");
             String example = request.getParameter("hfile");
-            String begin = request.getParameter("startTime");
-            Date beginTime = Date.valueOf(begin);
+            String begin = request.getParameter("beginTime");
+            begin = begin.replace("T", "-");
+            System.out.println(begin);
+            Date beginTime = null;
+            try {
+                beginTime = new Date(format.parse(begin).getTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             String end = request.getParameter("endTime");
-            Date endTime = Date.valueOf(end);
+            end = end.replace("T", "-");
+            System.out.println(end);
+            Date endTime = null;
+            try {
+                endTime = new Date(format.parse(end).getTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             String subInfo = request.getParameter("subInfo");
 
             homework.setHno(hno);
@@ -80,12 +83,8 @@ public class PublishAttentionServlet extends HttpServlet {
         response.sendRedirect("html/publish.html");
     }
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
-        // TODO Auto-generated method stub
         doGet(request, response);
     }
 
