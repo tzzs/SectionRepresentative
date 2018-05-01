@@ -1,0 +1,105 @@
+@charset "UTF-8";
+.content{
+	width:100%;
+	height:500px;
+	background-color: #CCE4FF;
+	padding-top: 30px;
+	margin: auto;
+	text-align: center;
+	position: relative;
+}
+.content_in{
+	width:80%;
+	height: 400px;
+	background-color: #FEFCFA;
+	margin: auto;
+	padding-top:20px;
+}
+.content_in div{
+	float: left;
+}
+.lift-nav{
+	width: 25%;
+	height:300px;
+}
+.lift-nav li{
+	list-style-type:none;
+	width: 150px;
+	height: 70px;
+	text-align: center;
+	line-height: 70px;
+	border-bottom: solid 1px #85C5E0;
+	cursor: pointer;
+}
+.lift-nav li a:hover{
+	color:#85C5E0;
+}
+.lift-nav li a{
+	text-decoration: none;
+	color: black;
+	display: block;
+	width:100%;
+	height: 70px;
+}
+ul .on a{
+	color:#85C5E0;
+}
+.lift-nav li img{
+	margin-top: 10px;
+}
+.publish_con,.amend_con,.query_con,.delete_con{
+	width:70%;
+	margin-left:20px;
+	padding-top:20px;
+	height: 600px;
+	padding: 0px;
+	display: block;
+}
+.publish_con form{
+	width:100%;
+	height: 300px;
+}
+.publish_con form div{
+	width:100%;
+	height:34px;
+	float: left;
+	margin-top: 10px;
+}
+.publish_con form span{
+	float: left;
+	margin-left: 20px;
+	width:100px;
+	height: 34px;
+	display: block;
+	line-height: 34px;
+	text-align: center;
+}
+.publish_con form .form-con
+{
+	width:65%;
+	height: 32px;
+}
+.publish_con .subbtn{
+	width:80px;
+	height: 40px;
+	background-color: #85C5E0;
+	color: white;
+	border: none;
+	margin-top:10px;
+}
+.amend_con,.query_con,.delete_con{
+	display: none;
+}
+form .textnum
+{
+	width:200px;
+	height: 25px;
+}
+form .input-btn
+{
+	width:50px;
+	height: 30px;
+	color: white;
+	background-color: #85C5E0;
+	border: none;
+}

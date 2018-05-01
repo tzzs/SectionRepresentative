@@ -5,10 +5,9 @@
 <script src="../JS/jquery-3.2.1.js"></script>
 <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css"/>
 <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css"/>
-<link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/publish.css">
-<link rel="stylesheet" media="screen and (max-width:943px) and (min-width:501px)" type="text/css" href="../CSS/publish_ipad.css">
-<link rel="stylesheet" media="screen and (max-width:500px)" type="text/css" href="../CSS/publish_min.css">
-<script src="../JS/LiftEffect.js"></script>
+<link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/manage.css">
+<link rel="stylesheet" media="screen and (max-width:943px) and (min-width:501px)" type="text/css" href="../CSS/manage_ipad.css">
+<link rel="stylesheet" media="screen and (max-width:500px)" type="text/css" href="../CSS/manage_min.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -33,7 +32,7 @@
 				</div>
 				<div class="functions" id="list_fun">
 					<ul id="nav_li">
-						<li>
+						<li class="li_on">
 							<a href="manage.html">信息管理</a>
 						</li>
 						<li>
@@ -42,7 +41,7 @@
 						<li>
 							<a href="my.html">我的作业</a>
 						</li>
-						<li  class="li_on">
+						<li>
 							<a href="publish.html">公告</a>
 						</li>
 						<li>
@@ -72,60 +71,58 @@
             </div>
 		</div>
 	</div>
-	<div class="content" id="con1">
-		<div class="content_in" id='cons'>
+	<div class="manage_content">
+		<div class="manage_con_in">
 			<div class="lift-nav">
 				<ul class="lift" id="list_ul">
-					<li class="on"><a id="a1" href="javascirpt:;"><img src="../img/publish1.png"><span>发布公告</span></a></li>
-					<li><a id="a2" href="javascirpt:;"><img src="../img/amend.png"><span>修改公告</span></a></li>
-					<li><a id="a3" href="javascirpt:;"><img src="../img/query.png"><span>查询公告</span></a></li>
-					<li><a id="a4" href="javascirpt:;"><img src="../img/delete.png"><span>删除公告</span></a></li>
+					<li class="on"><a id="a1" href="javascirpt:;"><img src="../img/publish1.png"><span>我的信息</span></a></li>
+					<li><a id="a2" href="javascirpt:;"><img src="../img/amend.png"><span>修改信息</span></a></li>
 				</ul>
 			</div>
 			<div id="div1" class="publish_con">
 				<form action="">
-					<div><span>公告名称</span><input type="text" class="form-con" placeholder="请输入公告名称"  autofocus></div>
-					<div><span>内          容</span><input type="text" class="form-con" placeholder="请输入公告内容"></div>
-					<div><span>作业反例</span><input type="text" class="form-con" placeholder="请输入作业范例文件名"></div>
-					<div><span>开始时间</span><input type="datetime-local" class="form-con" placeholder="请输入开始时间"></div>
-					<div><span>结束时间</span><input type="datetime-local" class="form-con" placeholder="请输入结束时间"></div>
-					<div><span>注意事项</span><input type="text" class="form-con" placeholder="请输入注意事项"></div>
-					<input type="submit" class="subbtn" value="提交">
+					<div><span>账    号</span><div class="form_div"></div></div>
+					<div><span>姓    名</span><div class="form_div"></div></div>
+					<div><span>邮     件</span><div class="form_div"></div></div>
+					<div><span>关     注</span><div class="form_div"></div></div>
+					<div><span>管理员</span><div class="form_div"></div></div>
 				</form>
 			</div>
 			<div id="div2" class="amend_con">
 				<form action="">
-					 <input type="text" class="textnum" placeholder="请输入作业号"  autofocus>
-					 <input type="submit" class="input-btn" value="搜索">
-				</form>
-			</div>
-			<div id="div3" class="query_con">
-				<form action="">
-					 <input type="text" class="textnum" placeholder="请输入作业号"  autofocus>
-					 <input type="submit" class="input-btn" value="查询">
-				</form>
-			</div>
-			<div id="div4" class="delete_con">
-				<form action="">
-					 <input type="text" class="textnum" placeholder="请输入作业号"  autofocus>
-					 <input type="submit" class="input-btn" value="查询">
+					<div><span>账    号</span><input type="text" class="form-con" autofocus></div>
+					<div><span>姓    名</span><input type="text" class="form-con"></div>
+					<div><span>邮     件</span><input type="text" class="form-con"></div>
+					<input type="submit" class="subbtn" value="提交">
 				</form>
 			</div>
 		</div>
 	</div>
-	
 </body>
 <script type="text/javascript">
+var flag1=0;
+$(function() {
+	$("#list1").click(function() {
+		flag1+=1;
+		if(flag1%2==0)
+		{
+			$("#list_fun1").fadeOut();
+		}
+		else{
+			$("#list_fun1").fadeIn();
+		}
+	})
+})
 $(function() {
 	$("#list_ul li").click(function() {
 		$("#list_ul li").eq($(this).index()).addClass("on").siblings().removeClass("on");
 	})
 })
-var img=['../img/publish.png','../img/amend.png','../img/query.png','../img/delete.png'];
-var img1=['../img/publish1.png','../img/amend1.png','../img/query1.png','../img/delete1.png']
+var img=['../img/publish.png','../img/amend.png'];
+var img1=['../img/publish1.png','../img/amend1.png']
 var arr = document.getElementById('list_ul').getElementsByTagName('a');
 var arr2 = document.getElementById('list_ul').getElementsByTagName('img');
-var arr1 = [document.getElementById('div1'),document.getElementById('div2'),document.getElementById('div3'),document.getElementById('div4')];
+var arr1 = [document.getElementById('div1'),document.getElementById('div2')];
 var i=0,j=0;
 arr[0].onclick = function(){
 	for(j=0;j<arr1.length;j++)
@@ -145,36 +142,5 @@ arr[1].onclick = function(){
 	arr1[1].style.display = 'block';
 	arr2[1].src = img1[1];
 }
-arr[2].onclick = function(){
-	for(j=0;j<arr1.length;j++)
-	{
-		arr1[j].style.display='none';	
-		arr2[j].src=img[j];
-	}
-	arr1[2].style.display = 'block';
-	arr2[2].src = img1[2];
-}
-arr[3].onclick = function(){
-	for(j=0;j<arr1.length;j++)
-	{
-		arr1[j].style.display='none';	
-		arr2[j].src=img[j];
-	}
-	arr1[3].style.display = 'block';
-	arr2[3].src = img1[3];
-}
-var flag1=0;
-$(function() {
-	$("#list1").click(function() {
-		flag1+=1;
-		if(flag1%2==0)
-		{
-			$("#list_fun1").fadeOut();
-		}
-		else{
-			$("#list_fun1").fadeIn();
-		}
-	})
-})
 </script>
 </html>

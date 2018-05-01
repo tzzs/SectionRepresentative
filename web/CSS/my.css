@@ -1,0 +1,27 @@
+@charset "UTF-8";
+.my_content{
+	width:100%;
+	height:500px;
+	background-color: #CCE4FF;
+	padding-top: 30px;
+	margin: auto;
+	text-align: center;
+	position: relative;
+}
+.my_con_in{
+	width:80%;
+	height: 400px;
+	background-color: #FEFCFA;
+	margin: auto;
+	padding-top:20px;
+}
+.my_con_in table{
+	border: solid 1px;
+	border-collapse: collapse;
+	margin: auto;
+}
+.my_con_in table tr th{
+	padding: 7px;	
+	border-left: solid 1px;
+	width:100px;
+}

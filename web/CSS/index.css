@@ -45,6 +45,7 @@
 	margin-top: 10px;
 	color: white;
 	font-size:16px;
+	cursor: pointer;S
 }
 .load_form div{
 	margin-top: 10px;
@@ -57,6 +58,19 @@
 	float:left;
 	font-size: 10px;
 }
-.regist {
+.regist{
 	margin-left: 145px;
+}
+.error img{
+	float: left;
+	margin-top: 5px;
+	margin-right: 5px;
+}
+.error{
+	height: 30px;
+	line-height: 30px;
+	color: red;
+	border:solid orange 1px;
+	padding-left: 20px;
+	margin-top: 10px
 }

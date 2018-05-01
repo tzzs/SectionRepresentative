@@ -2,12 +2,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <script src="../JS/jquery-3.2.1.js"></script>
 <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css"/>
-<link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/main.css"/>
 <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css"/>
-<link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/main_ipad.css"/>
+<link rel="stylesheet" type="text/css" href="../CSS/my.css">
+<title>Insert title here</title>
 </head>
 <body>
 	<div class="all_title">
@@ -37,13 +36,13 @@
 						<li>
 							<a href="add.html">添加关注</a>
 						</li>
-						<li>
+						<li  class="li_on">
 							<a href="my.html">我的作业</a>
 						</li>
 						<li>
 							<a href="publish.html">公告</a>
 						</li>
-						<li  class="li_on">
+						<li>
 							<a href="main.html">首页</a>
 						</li>
 					</ul>
@@ -63,51 +62,31 @@
 	                <li class="list_li"><a href="register.html">注册</a></li>
 	                <li class="list_li"><a href="main.html">首页</a></li>
 	                <li class="list_li"><a href="publish.html">公告</a></li>
-	                <li class="list_li"><a href="my.html">我的作业</a></li>
+	               	<li class="list_li"><a href="my.html">我的作业</a></li>
 	                <li class="list_li"><a href="add.html">添加关注</a></li>
 	                <li class="list_li"><a href="manage.html">信息管理</a></li>
 	            </ul>
             </div>
 		</div>
 	</div>
-	<div class="body_show">
-		<div class="rotate" id="Img">
-		</div>
-		<div class="function_search">
-			<form action="">
-				<h2>输入作业号,进行搜索</h2><img src="../img/search.png">
-				<input type="text" size="14"  placeholder="作业号">
-				<input type="submit" value="搜索">
-			</form>
+	<div class="my_content">
+		<div class="my_con_in">
+			<table>
+				<tr>
+					<th>名称</th>
+					<th>作业内容</th>
+					<th>作业范例</th>
+					<th>开始时间</th>
+					<th>结束时间</th>
+					<th>注意事项</th>
+					<th>上传文件</th>
+					<th>提交</th>
+				</tr>
+			</table>
 		</div>
 	</div>
 </body>
 <script type="text/javascript">
-//设置功能模块
-$(function() {
-	$("#nav_li li").click(function() {
-		$("#nav_li li").eq($(this).index()).addClass("li_on").siblings().removeClass("li_on");
-	})
-})
-//设置图片自动切换
-var arr = ['../img/banner01.jpg','../img/banner02.jpg'];
-var oImag = document.getElementById('Img');
-var num = 0;
-var timer = null;
-if(timer){  
-         clearInterval(timer);  
-         timer=null;  
-        }  
-timer=setInterval(autoplay,2000);  
-     // 定义图片切换函数  
-function autoplay(){  
-    num++;  
-    if(num>=arr.length){  
-        num=0;  
-    }  
-    oImag.style.backgroundImage="url("+arr[num]+")";
-}
-//设置iPad功能模块的淡入淡出
 var flag1=0;
 $(function() {
 	$("#list1").click(function() {
