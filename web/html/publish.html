@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <script src="../JS/jquery-3.2.1.js"></script>
@@ -12,25 +13,35 @@
   <script src="../JS/LiftEffect.js"></script>
   <title>添加公告</title>
 </head>
+
 <body>
   <div class="all_title">
     <div class="body">
       <div class="logo">
-        <a href="main.html"><img alt="" src="../img/LOGO.png"></a>
+        <a href="main.html">
+          <img alt="" src="../img/LOGO.png">
+        </a>
       </div>
       <div class="function">
         <div class="load_register">
           <ul>
             <li class="list_li">
-              <a id="list" class="list" href="javascript:;"><img src="../img/list1.png"><span
-                      id="list_span">列表</span></a>
+              <a id="list" class="list" href="javascript:;">
+                <img src="../img/list1.png">
+                <span id="list_span">列表</span>
+              </a>
             </li>
             <li>
-              <a class="register_nav" href="/logoutServlet"><span>注销</span></a>
+              <a class="register_nav" href="/logoutServlet">
+                <span>注销</span>
+              </a>
               <!--<img src="../img/register.png">-->
             </li>
             <li>
-              <a href="manage.html"><img src="../img/load.png"><span></span></a>
+              <a href="manage.html">
+                <img src="../img/load.png">
+                <span></span>
+              </a>
             </li>
           </ul>
         </div>
@@ -58,19 +69,38 @@
   </div>
   <div class="list_dl">
     <div class="logo">
-      <a href="main.html"><img alt="" src="../img/LOGO.png"></a>
+      <a href="main.html">
+        <img alt="" src="../img/LOGO.png">
+      </a>
     </div>
     <div class="list_dt">
-      <a class="list_img" id="list1" href="javascript:;"><img src="../img/list1.png"><span>列表</span></a>
+      <a class="list_img" id="list1" href="javascript:;">
+        <img src="../img/list1.png">
+        <span>列表</span>
+      </a>
       <div class="list_dd" id="list_fun1">
         <ul>
-          <li class="list_li"><a href="index.html">登录</a></li>
-          <li class="list_li"><a href="register.html">注册</a></li>
-          <li class="list_li"><a href="main.html">首页</a></li>
-          <li class="list_li"><a href="publish.html">公告</a></li>
-          <li class="list_li"><a href="my.html">我的作业</a></li>
-          <li class="list_li"><a href="add.html">添加关注</a></li>
-          <li class="list_li"><a href="manage.html">信息管理</a></li>
+          <li class="list_li">
+            <a href="index.html">登录</a>
+          </li>
+          <li class="list_li">
+            <a href="register.html">注册</a>
+          </li>
+          <li class="list_li">
+            <a href="main.html">首页</a>
+          </li>
+          <li class="list_li">
+            <a href="publish.html">公告</a>
+          </li>
+          <li class="list_li">
+            <a href="my.html">我的作业</a>
+          </li>
+          <li class="list_li">
+            <a href="add.html">添加关注</a>
+          </li>
+          <li class="list_li">
+            <a href="manage.html">信息管理</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -79,23 +109,64 @@
     <div class="content_in" id='cons'>
       <div class="lift-nav">
         <ul class="lift" id="list_ul">
-          <li class="on"><a id="a1" href="publish.html"><img src="../img/publish1.png"><span>发布公告</span></a></li>
-          <li><a id="a2" href="publish1.html"><img src="../img/amend.png"><span>修改公告</span></a></li>
-          <li><a id="a3" href="publish2.html"><img src="../img/query.png"><span>查询公告</span></a></li>
-          <li><a id="a4" href="publish3.html"><img src="../img/delete.png"><span>删除公告</span></a></li>
-          <li><a id="a5" href="publish4.html"><img src="../img/delete.png"><span>内容下载</span></a></li>
+          <li class="on">
+            <a id="a1" href="publish.html">
+              <img src="../img/publish1.png">
+              <span>发布公告</span>
+            </a>
+          </li>
+          <li>
+            <a id="a2" href="publish1.html">
+              <img src="../img/amend.png">
+              <span>修改公告</span>
+            </a>
+          </li>
+          <li>
+            <a id="a3" href="publish2.html">
+              <img src="../img/query.png">
+              <span>查询公告</span>
+            </a>
+          </li>
+          <li>
+            <a id="a4" href="publish3.html">
+              <img src="../img/delete.png">
+              <span>删除公告</span>
+            </a>
+          </li>
+          <li>
+            <a id="a5" href="publish4.html">
+              <img src="../img/delete.png">
+              <span>内容下载</span>
+            </a>
+          </li>
         </ul>
       </div>
       <div id="div1" class="publish_con">
         <form action="/publishServlet" method="post">
-          <div><span>公告名称</span><input type="text" name="hno" class="form-con" placeholder="请输入公告名称" autofocus></div>
-          <div><span>内          容</span><input type="text" name="hcontent" class="form-con" placeholder="请输入公告内容"></div>
-          <div><span>作业范例</span><input type="text" class="form-con" name="hfile" placeholder="请输入作业范例文件名"></div>
-          <div><span>开始时间</span><input type="datetime-local" name="beginTime" class="form-con" placeholder="请输入开始时间">
+          <div>
+            <span>公告名称</span>
+            <input type="text" name="hno" class="form-con" placeholder="请输入公告名称" autofocus>
           </div>
-          <div><span>结束时间</span><input type="datetime-local" name="endTime" class="form-con" placeholder="请输入结束时间">
+          <div>
+            <span>内 容</span>
+            <input type="text" name="hcontent" class="form-con" placeholder="请输入公告内容">
           </div>
-          <div><span>注意事项</span><input type="text" name="subInfo" class="form-con" placeholder="请输入注意事项"></div>
+          <div>
+            <span>作业范例</span>
+            <input type="text" class="form-con" name="hfile" placeholder="请输入作业范例文件名">
+          </div>
+          <div>
+            <span>开始时间</span>
+            <input type="datetime-local" name="beginTime" class="form-con" placeholder="请输入开始时间">
+          </div>
+          <div>
+            <span>结束时间</span>
+            <input type="datetime-local" name="endTime" class="form-con" placeholder="请输入结束时间">
+          </div>
+          <div>
+            <span>注意事项</span>
+            <input type="text" name="subInfo" class="form-con" placeholder="请输入注意事项">
+          </div>
           <input type="submit" class="subbtn" value="提交">
         </form>
       </div>
@@ -178,4 +249,5 @@
         })
     })
 </script>
+
 </html>

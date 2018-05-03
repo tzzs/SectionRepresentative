@@ -17,7 +17,6 @@ public class searchServlet extends HttpServlet {
         Homework homework = hd.select(hno);
         PrintWriter out = response.getWriter();
 
-
         JSONArray jsonArray = JSONArray.fromObject(homework);
 
         out.print(jsonArray);//返回给html

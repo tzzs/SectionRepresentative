@@ -47,7 +47,7 @@ ul .on a{
 .lift-nav li img{
 	margin-top: 10px;
 }
-.publish_con,.amend_con,.query_con,.delete_con{
+.publish_con,.amend_con,.query_con,.delete_con,.download_con{
 	width:70%;
 	margin-left:20px;
 	padding-top:20px;
