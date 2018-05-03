@@ -9,7 +9,7 @@ import java.io.IOException;
 @WebServlet(name = "deleteHomeworkServlet")
 public class deleteHomeworkServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String hno = request.getParameter("");
+        String hno = request.getParameter("hno");
         homeworkDao hd = new homeworkDao();
         //要加判断
         Cookie[] cookies = request.getCookies();
@@ -23,11 +23,9 @@ public class deleteHomeworkServlet extends HttpServlet {
                 } else {
                     System.out.println("非法删除");
                 }
-                hd.close();
                 return;
             }
         }
-        hd.close();
         response.sendRedirect("html/index.html");//没找到关于account的cookie就退出
     }
 

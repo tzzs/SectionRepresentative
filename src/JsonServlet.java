@@ -24,6 +24,7 @@ public class JsonServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         List<User> list = new ArrayList<>();//传递List
         //Map m=new HashMap();//传递Map
+        
         User u1 = new User();
         u1.setAccount("zah");
         u1.setPassword("123");

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "myHomeworkServlet", urlPatterns = "/myHomeworkServlet")
@@ -27,19 +28,31 @@ public class myHomeworkServlet extends HttpServlet {
 
                 List<Homework> homeworkAllList = new ArrayList<>();
 
-                for (String attention:attentions){
-                    List<Homework> homeworkList = hd.selectAll(account);
+
+                for (String attention : attentions) {
+                    List<Homework> homeworkList = hd.selectAll(attention);
                     homeworkAllList.addAll(homeworkList);
                 }
 
+                for (Homework homework : homeworkAllList) {
+                    System.out.println(homework.getHno());
+                    if (homework.getBeginTime() != null) {//sql.date  to util.date
+                        homework.setBeginTime(new Date(homework.getBeginTime().getTime()));
+                    }
+                    if (homework.getEndTime() != null) {
+                        homework.setEndTime(new Date(homework.getEndTime().getTime()));
+                    }
+//                    System.out.println(homework.getBeginTime());
+//                    System.out.println(homework.getEndTime());
+                }
+//                System.out.println(homeworkAllList.toString() + homeworkAllList.get(0) + homeworkAllList.get(0).getHno());
                 JSONArray json = JSONArray.fromObject(homeworkAllList);
                 out.print(json);
-                System.out.println(json);
+                System.out.println(json.toString());
                 out.close();
-                return;
             }
         }
-        response.sendRedirect("html/index.html");//没找到关于account的cookie就退出
+//        out.print("<p>未登录，<a href=\"html/index.html\">点击返回...</a></p>");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

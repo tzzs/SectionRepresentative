@@ -15,14 +15,16 @@ public class loginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
         System.out.println("filter");
         Cookie[] cookies = request.getCookies();
+        String account = null;
         for (Cookie cookie : cookies) {
-            System.out.println(cookie.getName());
             if (cookie.getName().equals("account")) {
-                chain.doFilter(req, resp);
-                return;
+                account = cookie.getValue();
             }
         }
-        response.sendRedirect("index.html");
+        System.out.println("account:" + account);
+        if (account == null || account.equals("")) {
+            response.sendRedirect("index.html");
+        }
         chain.doFilter(req, resp);
 
     }

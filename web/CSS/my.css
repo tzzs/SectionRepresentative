@@ -23,5 +23,6 @@
 .my_con_in table tr th{
 	padding: 7px;	
 	border-left: solid 1px;
+	border-bottom: solid 1px;
 	width:100px;
 }

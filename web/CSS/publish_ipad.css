@@ -75,7 +75,12 @@
 	width:65%;
 	height: 32px;
 }
-.publish_con .subbtn{
+#form-con1,#form-con2,#form-con3,#form-con4,#form-con5
+{
+	width:60%;
+	height: 32px;
+}
+.publish_con .subbtn,.amend_con .subbtn{
 	width:80px;
 	height: 40px;
 	background-color: #85C5E0;
@@ -83,10 +88,26 @@
 	border: none;
 	margin-top:10px;
 }
-.amend_con,.query_con,.delete_con{
-	display: none;
+.amend_con{
+	width:100%;
+	height: 300px;
 }
-form .textnum
+.amend_con form div{
+	width:100%;
+	height:34px;
+	float: left;
+	margin-top: 10px;
+}
+.amend_con form span{
+	float: left;
+	margin-left: 20px;
+	width:100px;
+	height: 34px;
+	display: block;
+	line-height: 34px;
+	text-align: center;
+}
+form .textnum,#textnum
 {
 	width:200px;
 	height: 25px;

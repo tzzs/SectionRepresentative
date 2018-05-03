@@ -10,6 +10,8 @@ import java.io.PrintWriter;
 @WebServlet(name = "addAttentionServlet", urlPatterns = "/addAttentionServlet")
 public class addAttentionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=utf-8");
+        request.setCharacterEncoding("utf-8");
         String attention = request.getParameter("attention");
         PrintWriter out = response.getWriter();
         userDao ud = new userDao();
@@ -20,29 +22,31 @@ public class addAttentionServlet extends HttpServlet {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("account")) {
                     account = cookie.getValue();
+                    System.out.println(account);
+
                     User user = ud.select(account);
                     String attentions = user.getAttention();
-                    String[] attentionsList = attentions.split(";");
-                    for (String a : attentionsList) {
-                        if (a.equals(attention)) {
-                            out.close();//已存在
-                            response.sendRedirect("html/add.html");
-                            return;
+                    if (attentions != null) {
+                        String[] attentionsList = attentions.split(";");
+                        for (String a : attentionsList) {
+                            if (a.equals(attention)) {
+                                out.print("<p>添加失败，<a href=\"html/add.html\">点击返回...</a></p>");
+                                return;
+                            }
                         }
                     }
-                    attentions += ";" + attention;
+                    attentions += attention + ";";
                     user.setAttention(attentions);
                     ud.update(user);//更新关注人
-                    ud.close();
-                    out.print("<p>添加成功，即将跳转...</p>");
-                    response.sendRedirect("html/add.html");
+                    out.print("<p>添加成功，<a href=\"html/add.html\">点击返回...</a></p>");
                     out.close();
-                    return;
                 }
             }
         }
-        out.close();
-        response.sendRedirect("html/index.html");
+        if (account == null || account.equals("")) {
+//            response.sendRedirect("html/index.html");
+            out.print("<p>未登录，<a href=\"html/index.html\">点击返回...</a></p>");
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

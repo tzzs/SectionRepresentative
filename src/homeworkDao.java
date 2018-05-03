@@ -9,7 +9,7 @@ public class homeworkDao {
 
 
     public void init() {
-        connection = new jdbc("jdbc:mysql://localhost:3306/sectionRepresentative?useUnicode=true&useSSL=false&characterEncoding=UTF-8").getConnection();
+        connection = new jdbc("jdbc:mysql://localhost:3306/sectionrepresentative?useUnicode=true&useSSL=false&characterEncoding=UTF-8").getConnection();
     }
 
     public void add(Homework homework) {
@@ -23,7 +23,7 @@ public class homeworkDao {
             ps.setString(3, homework.getHdir());
             ps.setString(4, homework.getHfile());
             ps.setString(5, homework.getSubInfo());
-            ps.setString(6, homework.getIssuer());
+            ps.setString(6, homework.getSubInfo());
             ps.setDate(7, (Date) homework.getBeginTime());
             ps.setDate(8, (Date) homework.getEndTime());
 
@@ -98,7 +98,28 @@ public class homeworkDao {
         }
         return homework;
     }
-
+    public String selectHno(String hno) {
+    	String reH="";
+        init();
+        String sql = "select * from homework where hno=?";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, hno);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+              String h=rs.getString("hno");
+              if(h.equals(hno)){
+            	  reH=rs.getString("Hdir");
+            	  break;
+              }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            jdbc.close(rs, ps, connection);
+        }
+        return reH;
+    }
     public List<Homework> selectAll(String account) {
         List<Homework> homeworkList = new ArrayList<>();
         init();
@@ -125,31 +146,5 @@ public class homeworkDao {
             jdbc.close(rs, ps, connection);
         }
         return homeworkList;
-    }
-
-    public void close() {
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                if (ps != null) {
-                    try {
-                        ps.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    } finally {
-                        if (connection != null) {
-                            try {
-                                connection.commit();
-                            } catch (SQLException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }
