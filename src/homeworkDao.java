@@ -98,8 +98,9 @@ public class homeworkDao {
         }
         return homework;
     }
-    public String selectHno(String hno) {
-    	String reH="";
+
+    public String getDir(String hno) {
+        String reH = "";
         init();
         String sql = "select * from homework where hno=?";
         try {
@@ -107,11 +108,11 @@ public class homeworkDao {
             ps.setString(1, hno);
             rs = ps.executeQuery();
             while (rs.next()) {
-              String h=rs.getString("hno");
-              if(h.equals(hno)){
-            	  reH=rs.getString("Hdir");
-            	  break;
-              }
+                String h = rs.getString("hno");
+                if (h.equals(hno)) {
+                    reH = rs.getString("Hdir");
+                    break;
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -120,6 +121,7 @@ public class homeworkDao {
         }
         return reH;
     }
+
     public List<Homework> selectAll(String account) {
         List<Homework> homeworkList = new ArrayList<>();
         init();

@@ -16,6 +16,7 @@ import java.util.List;
 public class myHomeworkServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cookie[] cookies = request.getCookies();
+        response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("account")) {
