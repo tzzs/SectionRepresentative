@@ -4,10 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <script src="../JS/jquery-3.2.1.js"></script>
-  <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css" />
-  <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css" />
+  <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css"/>
+  <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css"/>
   <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/publish.css">
-  <link rel="stylesheet" media="screen and (max-width:943px) and (min-width:501px)" type="text/css" href="../CSS/publish_ipad.css">
+  <link rel="stylesheet" media="screen and (max-width:943px) and (min-width:501px)" type="text/css"
+        href="../CSS/publish_ipad.css">
   <link rel="stylesheet" media="screen and (max-width:500px)" type="text/css" href="../CSS/publish_min.css">
   <script src="../JS/searchWork.js"></script>
   <title>更新公告</title>
@@ -174,28 +175,29 @@
 
 </body>
 <script type="text/javascript">
-  $(function () {
-    $("#list_ul li").click(function () {
-      $("#list_ul li").eq($(this).index()).addClass("on").siblings().removeClass("on");
-    })
-  })
-  var flag1 = 0;
-  $(function () {
-    $("#list1").click(function () {
-      flag1 += 1;
-      if (flag1 % 2 == 0) {
-        $("#list_fun1").fadeOut();
-      }
-      else {
-        $("#list_fun1").fadeIn();
-      }
-    })
-  })
-  function update() {
-    document.getElementById("search").submit();
-    document.getElementById("updateForm").style.display = "inline";
-    //获取结果
-  }
+    $(function () {
+        $("#list_ul li").click(function () {
+            $("#list_ul li").eq($(this).index()).addClass("on").siblings().removeClass("on");
+        })
+    });
+    var flag1 = 0;
+    $(function () {
+        $("#list1").click(function () {
+            flag1 += 1;
+            if (flag1 % 2 === 0) {
+                $("#list_fun1").fadeOut();
+            }
+            else {
+                $("#list_fun1").fadeIn();
+            }
+        })
+    });
+
+    function update() {
+        document.getElementById("search").submit();
+        document.getElementById("updateForm").style.display = "inline";
+        //获取结果
+    }
 
 </script>
 

@@ -40,6 +40,7 @@ public class uploadServlet extends javax.servlet.http.HttpServlet {
                 Collection<Part> parts = request.getParts();
                 if (parts == null) {
                     System.out.println("null");
+                    return;
                 }
                 System.out.println("parts");
                 for (Part part : parts) {

@@ -102,6 +102,7 @@
       </div>
     </div>
   </div>
+
   <div class="my_content">
     <div class="my_con_in">
       <table id="homework">
@@ -144,7 +145,7 @@
                           "<th>" + json[i].issuer + "</th>" +
                           "<th>" + ChangeDateFormat(json[i].beginTime) + "</th>" +
                           "<th>" + ChangeDateFormat(json[i].endTime) + "</th>" +
-                          "<th><a href=\"/oneFileDownServlet?hno=" + hno + "\">" + json[i].hfile + "</a></th>" +
+                          "<th><a href=\"/oneFileDownServlet?hno=" + json[i].hno + "\">" + json[i].hfile + "</a></th>" +
                           "<th><form action=" + url + " id=\"uploadFile" + i + "\" enctype=\"multipart/form-data\" method=\"post\">" +
                           "<input type=\"file\" id= file" + i + " name=\"filename\" value=\"选择文件\"></form></th>" +
                           "<th><input type=\"button\" onclick=\"submit(" + i + ")\" value=\"提交\"></th>" +

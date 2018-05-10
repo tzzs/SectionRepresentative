@@ -4,10 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <script src="../JS/jquery-3.2.1.js"></script>
-  <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css" />
-  <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css" />
+  <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css"/>
+  <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css"/>
   <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/publish.css">
-  <link rel="stylesheet" media="screen and (max-width:943px) and (min-width:501px)" type="text/css" href="../CSS/publish_ipad.css">
+  <link rel="stylesheet" media="screen and (max-width:943px) and (min-width:501px)" type="text/css"
+        href="../CSS/publish_ipad.css">
   <link rel="stylesheet" media="screen and (max-width:500px)" type="text/css" href="../CSS/publish_min.css">
   <script src="../JS/LiftEffect.js"></script>
   <title>添加公告</title>
@@ -107,6 +108,7 @@
 
   <div class="content" id="con1">
     <div class="content_in" id='cons'>
+
       <div class="lift-nav">
         <ul class="lift" id="list_ul">
           <li class="on">
@@ -141,6 +143,7 @@
           </li>
         </ul>
       </div>
+
       <div id="div1" class="publish_con">
         <form action="/publishServlet" method="post">
           <div>
@@ -189,65 +192,65 @@
         </form> -->
     </div>
   </div>
-  </div>
 
 </body>
+
 <script type="text/javascript">
-  $(function () {
-    $("#list_ul li").click(function () {
-      $("#list_ul li").eq($(this).index()).addClass("on").siblings().removeClass("on");
+    $(function () {
+        $("#list_ul li").click(function () {
+            $("#list_ul li").eq($(this).index()).addClass("on").siblings().removeClass("on");
+        })
+    });
+    var img = ['../img/publish.png', '../img/amend.png', '../img/query.png', '../img/delete.png'];
+    var img1 = ['../img/publish1.png', '../img/amend1.png', '../img/query1.png', '../img/delete1.png']
+    var arr = document.getElementById('list_ul').getElementsByTagName('a');
+    var arr2 = document.getElementById('list_ul').getElementsByTagName('img');
+    var arr1 = [document.getElementById('div1'), document.getElementById('div2'), document.getElementById('div3'), document.getElementById('div4')];
+    var i = 0, j = 0;
+    arr[0].onclick = function () {
+        for (j = 0; j < arr1.length; j++) {
+            arr1[j].style.display = 'none';
+            arr2[j].src = img[j];
+        }
+        arr1[0].style.display = 'block';
+        arr2[0].src = img1[0];
+    };
+    arr[1].onclick = function () {
+        for (j = 0; j < arr1.length; j++) {
+            arr1[j].style.display = 'none';
+            arr2[j].src = img[j];
+        }
+        arr1[1].style.display = 'block';
+        arr2[1].src = img1[1];
+    };
+    arr[2].onclick = function () {
+        for (j = 0; j < arr1.length; j++) {
+            arr1[j].style.display = 'none';
+            arr2[j].src = img[j];
+        }
+        arr1[2].style.display = 'block';
+        arr2[2].src = img1[2];
+    };
+    arr[3].onclick = function () {
+        for (j = 0; j < arr1.length; j++) {
+            arr1[j].style.display = 'none';
+            arr2[j].src = img[j];
+        }
+        arr1[3].style.display = 'block';
+        arr2[3].src = img1[3];
+    };
+    var flag1 = 0;
+    $(function () {
+        $("#list1").click(function () {
+            flag1 += 1;
+            if (flag1 % 2 === 0) {
+                $("#list_fun1").fadeOut();
+            }
+            else {
+                $("#list_fun1").fadeIn();
+            }
+        })
     })
-  })
-  var img = ['../img/publish.png', '../img/amend.png', '../img/query.png', '../img/delete.png'];
-  var img1 = ['../img/publish1.png', '../img/amend1.png', '../img/query1.png', '../img/delete1.png']
-  var arr = document.getElementById('list_ul').getElementsByTagName('a');
-  var arr2 = document.getElementById('list_ul').getElementsByTagName('img');
-  var arr1 = [document.getElementById('div1'), document.getElementById('div2'), document.getElementById('div3'), document.getElementById('div4')];
-  var i = 0, j = 0;
-  arr[0].onclick = function () {
-    for (j = 0; j < arr1.length; j++) {
-      arr1[j].style.display = 'none';
-      arr2[j].src = img[j];
-    }
-    arr1[0].style.display = 'block';
-    arr2[0].src = img1[0];
-  }
-  arr[1].onclick = function () {
-    for (j = 0; j < arr1.length; j++) {
-      arr1[j].style.display = 'none';
-      arr2[j].src = img[j];
-    }
-    arr1[1].style.display = 'block';
-    arr2[1].src = img1[1];
-  }
-  arr[2].onclick = function () {
-    for (j = 0; j < arr1.length; j++) {
-      arr1[j].style.display = 'none';
-      arr2[j].src = img[j];
-    }
-    arr1[2].style.display = 'block';
-    arr2[2].src = img1[2];
-  }
-  arr[3].onclick = function () {
-    for (j = 0; j < arr1.length; j++) {
-      arr1[j].style.display = 'none';
-      arr2[j].src = img[j];
-    }
-    arr1[3].style.display = 'block';
-    arr2[3].src = img1[3];
-  }
-  var flag1 = 0;
-  $(function () {
-    $("#list1").click(function () {
-      flag1 += 1;
-      if (flag1 % 2 == 0) {
-        $("#list_fun1").fadeOut();
-      }
-      else {
-        $("#list_fun1").fadeIn();
-      }
-    })
-  })
 </script>
 
 </html>
