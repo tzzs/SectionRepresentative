@@ -46,7 +46,7 @@ public class myHomeworkServlet extends HttpServlet {
 //                    System.out.println(homework.getBeginTime());
 //                    System.out.println(homework.getEndTime());
                 }
-//                System.out.println(homeworkAllList.toString() + homeworkAllList.get(0) + homeworkAllList.get(0).getHno());
+//                System.out.println(homeworkAllList.toString() + homeworkAllList.get(0) + homeworkAllList.get(0).gethno());
                 JSONArray json = JSONArray.fromObject(homeworkAllList);
                 out.print(json);
                 System.out.println(json.toString());

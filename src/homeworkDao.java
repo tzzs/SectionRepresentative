@@ -23,7 +23,7 @@ public class homeworkDao {
             ps.setString(3, homework.getHdir());
             ps.setString(4, homework.getHfile());
             ps.setString(5, homework.getSubInfo());
-            ps.setString(6, homework.getSubInfo());
+            ps.setString(6, homework.getIssuer());
             ps.setDate(7, (Date) homework.getBeginTime());
             ps.setDate(8, (Date) homework.getEndTime());
 
@@ -148,5 +148,23 @@ public class homeworkDao {
             jdbc.close(rs, ps, connection);
         }
         return homeworkList;
+    }
+
+    public List<String> getAllHno(){
+        List<String> stringList = new ArrayList<>();
+        init();
+        String sql = "select * from homework";
+        try{
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                stringList.add(rs.getString(1));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            jdbc.close(rs,ps,connection);
+        }
+        return stringList;
     }
 }
