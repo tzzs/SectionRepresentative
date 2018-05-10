@@ -4,10 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <script src="../JS/jquery-3.2.1.js"></script>
-  <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css" />
-  <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css" />
+  <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css"/>
+  <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css"/>
   <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/publish.css">
-  <link rel="stylesheet" media="screen and (max-width:943px) and (min-width:501px)" type="text/css" href="../CSS/publish_ipad.css">
+  <link rel="stylesheet" media="screen and (max-width:943px) and (min-width:501px)" type="text/css"
+        href="../CSS/publish_ipad.css">
   <link rel="stylesheet" media="screen and (max-width:500px)" type="text/css" href="../CSS/publish_min.css">
   <script src="../JS/LiftEffect.js"></script>
   <title>查询结果</title>
@@ -23,7 +24,26 @@
       </div>
       <div class="function">
         <div class="load_register">
-          <a href="#">注销登录</a>
+          <ul>
+            <li class="list_li">
+              <a id="list" class="list" href="javascript:;">
+                <img src="../img/list1.png">
+                <span id="list_span">列表</span>
+              </a>
+            </li>
+            <li>
+              <a class="register_nav" href="/logoutServlet">
+                <span>注销</span>
+              </a>
+              <!--<img src="../img/register.png">-->
+            </li>
+            <li>
+              <a href="manage.html">
+                <img src="../img/load.png">
+                <span></span>
+              </a>
+            </li>
+          </ul>
         </div>
         <div class="functions" id="list_fun">
           <ul id="nav_li">
@@ -61,6 +81,12 @@
       <div class="list_dd" id="list_fun1">
         <ul>
           <li class="list_li">
+            <a href="manage.html">我</a>
+          </li>
+          <li class="list_li">
+            <a href="/logoutServlet">注销</a>
+          </li>
+          <li class="list_li">
             <a href="main.html">首页</a>
           </li>
           <li class="list_li">
@@ -75,13 +101,11 @@
           <li class="list_li">
             <a href="manage.html">信息管理</a>
           </li>
-          <li class="list_li">
-            <a href="#">注销登录</a>
-          </li>
         </ul>
       </div>
     </div>
   </div>
+
   <div class="content" id="con1">
     <div class="content_in" id='cons'>
       <div class="lift-nav">
@@ -127,23 +151,23 @@
 </body>
 
 <script type="text/javascript">
-  $(function () {
-    $("#list_ul li").click(function () {
-      $("#list_ul li").eq($(this).index()).addClass("on").siblings().removeClass("on");
+    $(function () {
+        $("#list_ul li").click(function () {
+            $("#list_ul li").eq($(this).index()).addClass("on").siblings().removeClass("on");
+        })
     })
-  })
-  var flag1 = 0;
-  $(function () {
-    $("#list1").click(function () {
-      flag1 += 1;
-      if (flag1 % 2 == 0) {
-        $("#list_fun1").fadeOut();
-      }
-      else {
-        $("#list_fun1").fadeIn();
-      }
+    var flag1 = 0;
+    $(function () {
+        $("#list1").click(function () {
+            flag1 += 1;
+            if (flag1 % 2 == 0) {
+                $("#list_fun1").fadeOut();
+            }
+            else {
+                $("#list_fun1").fadeIn();
+            }
+        })
     })
-  })
 </script>
 
 </html>
