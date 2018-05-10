@@ -109,6 +109,9 @@
   <div class="content" id="con1">
     <div class="content_in" id='cons'>
 
+      <div id="leftbar">
+
+      </div>
       <div class="lift-nav">
         <ul class="lift" id="list_ul">
           <li class="on">
@@ -145,18 +148,19 @@
       </div>
 
       <div id="div1" class="publish_con">
-        <form action="/publishServlet" method="post">
-          <div>
-            <span>公告名称</span>
-            <input type="text" name="hno" class="form-con" placeholder="请输入公告名称" autofocus>
-          </div>
+        <form action="/publishServlet" method="post" enctype=multipart/form-data>
+          <!--<div>-->
+          <!--<span>公告名称</span>-->
+          <!--<input type="text" name="hno" class="form-con" placeholder="请输入公告名称" autofocus>-->
+          <!--</div>-->
           <div>
             <span>内 容</span>
             <input type="text" name="hcontent" class="form-con" placeholder="请输入公告内容">
           </div>
           <div>
-            <span>作业范例</span>
-            <input type="text" class="form-con" name="hfile" placeholder="请输入作业范例文件名">
+            <span>作业文件</span>
+            <input type="file" class="form-con" name="hfile" value="选择文件">
+            <!--<input type="text" class="form-con" name="hfile" placeholder="请输入作业范例文件名">-->
           </div>
           <div>
             <span>开始时间</span>
@@ -166,10 +170,10 @@
             <span>结束时间</span>
             <input type="datetime-local" name="endTime" class="form-con" placeholder="请输入结束时间">
           </div>
-          <div>
-            <span>注意事项</span>
-            <input type="text" name="subInfo" class="form-con" placeholder="请输入注意事项">
-          </div>
+          <!--<div>-->
+            <!--<span>注意事项</span>-->
+            <!--<input type="text" name="subInfo" class="form-con" placeholder="请输入注意事项">-->
+          <!--</div>-->
           <input type="submit" class="subbtn" value="提交">
         </form>
       </div>

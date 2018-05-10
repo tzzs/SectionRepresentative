@@ -11,10 +11,11 @@
         href="../CSS/publish_ipad.css">
   <link rel="stylesheet" media="screen and (max-width:500px)" type="text/css" href="../CSS/publish_min.css">
   <script src="../JS/LiftEffect.js"></script>
+  <script src="../JS/leftBar.js"></script>
   <title>查询结果</title>
 </head>
 
-<body>
+<body onload="leftBar()">
   <div class="all_title">
     <div class="body">
       <div class="logo">
@@ -108,7 +109,10 @@
 
   <div class="content" id="con1">
     <div class="content_in" id='cons'>
-      <div class="lift-nav">
+      <div id="leftbar">
+
+      </div>
+      <!-- <div class="lift-nav">
         <ul class="lift" id="list_ul">
           <li>
             <a id="a1" href="publish.html">
@@ -141,7 +145,7 @@
             </a>
           </li>
         </ul>
-      </div>
+      </div> -->
       <div id="div5" class="download_con">
         <!-- 表格下载 -->
       </div>

@@ -169,6 +169,9 @@
           window.location(url);
       }
 
+      /**
+       * @return {string}
+       */
       function ChangeDateFormat(d) {
           if (d == null) {
               return;
@@ -182,8 +185,12 @@
           //日期为个位数时在前面+0
           var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
 
+          //时间
+          var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+          var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+
           //getFullYear得到4位数的年份 ，返回一串字符串
-          return date.getFullYear() + "-" + month + "-" + currentDate;
+          return date.getFullYear() + "-" + month + "-" + currentDate + " " + hour + ":" + minute;
       }
 
       window.onload = add;
@@ -195,7 +202,7 @@
     $(function () {
         $("#list1").click(function () {
             flag1 += 1;
-            if (flag1 % 2 == 0) {
+            if (flag1 % 2 === 0) {
                 $("#list_fun1").fadeOut();
             }
             else {

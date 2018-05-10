@@ -1,7 +1,7 @@
 function getSubmitted(hno) {
     $.ajax({
         type: "POST", //请求方式
-        url: "/myServlet",//请求路径
+        url: "/submittedServlet",//请求路径
         cache: false,
         data: "myServlet",//传参
         dataType: 'json',//返回值类型
@@ -9,7 +9,7 @@ function getSubmitted(hno) {
             var attention = json[0].attention;
             var attentions = attention.split(";");
             for (a in attentions) {
-                document.write(attentions[a], "<br>");
+                document.write(attentions[a].account, attentions[a].name, "<br>");
             }
         }
     })

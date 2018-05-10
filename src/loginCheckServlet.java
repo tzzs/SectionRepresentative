@@ -1,3 +1,5 @@
+import password.secure;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -15,13 +17,13 @@ public class loginCheckServlet extends HttpServlet {
         String account = request.getParameter("account");
         String password = request.getParameter("password");
 //        String[] remember = request.getParameterValues("remember");
-
+        String pwd = secure.Encrypt(password);
         userDao ud = new userDao();
         User user = ud.select(account);
 
 
         //获取服务器账号密码 对比
-        if (password.equals(user.getPassword())) {
+        if (pwd.equals(user.getPassword())) {
             Cookie cookie = new Cookie("account", user.getAccount());
             response.addCookie(cookie);
             response.sendRedirect("html/main.html");
