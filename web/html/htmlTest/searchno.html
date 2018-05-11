@@ -4,14 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <script src="../JS/jquery-3.2.1.js"></script>
-  <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css"/>
-  <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css"/>
+  <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css" />
+  <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css" />
   <link rel="stylesheet" type="text/css" href="../CSS/my.css">
   <link rel="stylesheet" type="text/css" href="../CSS/footer.css"/>
   <title>我的作业</title>
-  <script src="../JS/search.js"></script>
 </head>
-<body onload="oncreate();show()">
+<body onload="oncreate()">
   <div class="all_title">
     <div class="body">
       <div class="logo">
@@ -119,57 +118,74 @@
     </div>
   </div>
   <div id="footer">
-    <!--页脚-->
-    <div id="for">
-      <a href="serve2.html">关于我们</a> |
-      <a href="serve2.html">服务条款</a> |
-      <a href="serve2.html">帮助中心</a> |
-      <a href="serve2.html">联系我们</a>
-      <p>Copyright © 2018 Class Representative. 保留所有权利。</p>
+        <!--页脚-->
+        <div id="for">
+            <a href="serve2.html">关于我们</a> |
+            <a href="serve2.html">服务条款</a> |
+            <a href="serve2.html">帮助中心</a> |
+            <a href="serve2.html">联系我们</a> 
+            <p>Copyright © 2018 Class Representative. 保留所有权利。</p>
+        </div>
     </div>
-  </div>
 </body>
 
 <script type="text/javascript">
-    var flag1 = 0;
-    $(function () {
-        $("#list1").click(function () {
-            flag1 += 1;
-            if (flag1 % 2 === 0) {
-                $("#list_fun1").fadeOut();
-            }
-            else {
-                $("#list_fun1").fadeIn();
-            }
-        })
-    });
-
-    function oncreate() {
-        var Oth = document.getElementById('table').getElementsByTagName('tr');
-        var Ocon = document.getElementById('con');
-        var Oconin = document.getElementById('con-in');
-        if (Oth.length >= 12) {
-            var len = 30 * Oth.length + 95;
-            var len1 = 30 * Oth.length + 135;
-            Ocon.style.height = len + 'px';
-            Oconin.style.height = len1 + 'px';
-        }
-    }
-
-    function show() {
-        var url = location.search;
-        var theObject = {};
-        if (url.indexOf("?") !== -1) {
-            var str = url.substr(1);
-            strs = str.split("&");
-            for (var i = 0; i < sts.length; i++) {
-                theObject[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-            }
-        }
-        var hno = theObject['hno'];
-        serarch(hno);
-    }
-
+  var flag1 = 0;
+  var hno;
+  $(function () {
+    $("#list1").click(function () {
+      flag1 += 1;
+      if (flag1 % 2 == 0) {
+        $("#list_fun1").fadeOut();
+      }
+      else {
+        $("#list_fun1").fadeIn();
+      }
+    })
+  })
+  function oncreate(){
+		var Oth = document.getElementById('homework').getElementsByTagName('tr');
+		var Ocon = document.getElementById('con');
+		var Oconin = document.getElementById('con-in');
+		var len=0;
+		for(var i=0;i<Oth.length;i+=8)
+		{
+			len=len+Oth[i].clientHeight;		
+		}
+		if(len>=400)
+		{
+			len1 = len+95;
+			len2 =len+135;
+			Ocon.style.height = len1+'px';
+			Oconin.style.height = len2+'px';
+		}
+	}
+function ReadCookie(cookieName) {
+    var theCookie = "" + document.cookie;
+    var ind = theCookie.indexOf(cookieName);
+    if(ind==-1 || cookieName=="") return "";
+    var ind1 = theCookie.indexOf(';',ind);
+    if(ind1==-1) ind1 = theCookie.length;
+    /*读取Cookie值*/
+    return unescape(theCookie.substring(ind+cookieName.length+1,ind1));
+}
+$(function () {  
+	 hno = ReadCookie("hno");
+	 alert(hno);
+        $.ajax({  
+            type: "POST",  
+            dataType: "json",  
+            url: "../searchHomework?hno="+hno, 
+            cache: false,
+            data:"",  
+            success: function (json) { 
+                    
+            },  
+            error: function () {  
+                alert("查询失败")  
+            }  
+        }); 
+});
 </script>
 
 </html>

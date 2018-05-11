@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <script src="../JS/jquery-3.2.1.js"></script>
-  <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css" />
-  <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css" />
+  <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css"/>
+  <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css"/>
   <link rel="stylesheet" type="text/css" href="../CSS/my.css">
   <link rel="stylesheet" type="text/css" href="../CSS/footer.css"/>
   <title>我的作业</title>
- 	<script src="../JS/my.js"></script>
+  <script src="../JS/my.js"></script>
 </head>
 
 <body onload="oncreate()">
@@ -107,12 +107,11 @@
     <div class="my_con_in" id="con">
       <table id="homework">
         <tr id="hometr">
-          <th>名称</th>
+          <th>作业号</th>
           <th>作业内容</th>
-          <th>作业范例</th>
           <th>开始时间</th>
           <th>结束时间</th>
-          <th>注意事项</th>
+          <th>作业附件</th>
           <th>上传文件</th>
           <th>提交</th>
         </tr>
@@ -120,115 +119,113 @@
     </div>
   </div>
   <div id="footer">
-        <!--页脚-->
-        <div id="for">
-            <a href="serve2.html">关于我们</a> |
-            <a href="serve2.html">服务条款</a> |
-            <a href="serve2.html">帮助中心</a> |
-            <a href="serve2.html">联系我们</a> 
-            <p>Copyright © 2018 Class Representative. 保留所有权利。</p>
-        </div>
+    <!--页脚-->
+    <div id="for">
+      <a href="serve2.html">关于我们</a> |
+      <a href="serve2.html">服务条款</a> |
+      <a href="serve2.html">帮助中心</a> |
+      <a href="serve2.html">联系我们</a>
+      <p>Copyright © 2018 Class Representative. 保留所有权利。</p>
     </div>
+  </div>
 
   <script>
-    var j;
-    
-    function add() {
-      $.ajax({
-        type: "GET", //请求方式
-        url: "/myHomeworkServlet",//请求路径
-        cache: false,
-        //传参
-        dataType: 'json',//返回值类型
-        success: function (json) {
-          // alert(json);
+      var j;
 
-          // alert("success");
-          var s = "";
+      function add() {
+          $.ajax({
+              type: "GET", //请求方式
+              url: "/myHomeworkServlet",//请求路径
+              cache: false,
+              //传参
+              dataType: 'json',//返回值类型
+              success: function (json) {
+                  // alert(json);
 
-          for (var i in json) {
-            // alert(i);
-            var url = "/uploadServlet?hno=" + json[i].hno;
-            s = s + "<tr><th>" + json[i].hno + "</th>" +
-              "<th>" + json[i].hcontent + "</th>" +
-              "<th>" + json[i].hfile + "</th>" +
-              "<th>" + ChangeDateFormat(json[i].beginTime) + "</th>" +
-              "<th>" + ChangeDateFormat(json[i].endTime) + "</th>" +
-              "<th>" + json[i].subInfo + "</th>" +
-              "<th><form action=" + url + " id=\"uploadFile" + i + "\" enctype=\"multipart/form-data\" method=\"post\">" +
-              "<input type=\"file\" id= file" + i + " name=\"filename\" value=\"选择文件\"></form></th>" +
-              "<th><input type=\"button\" onclick=\"submit(" + i + ")\" value=\"提交\"></th>" +
-              "</tr>";
-          }
-          document.getElementById("hometr").insertAdjacentHTML("afterend", s);// = s
-          oBody.innerHTML = s;
-          //弹出返回过来的List对象
-          J = json;
-        },
-        error: function () {
-          // alert(json);
-          alert("error,未登录状态，确认后跳转登录...");//弹出返回过来的List对象
-          self.location = "index.html";
-        }
-      });
-    }
+                  // alert("success");out/artifacts/N_war_exploded2/WEB-INF/FILE/664375/wallls.com_163498.png
+                  var s = "";
 
-    function upload(i, hno) {
-      var file = document.getElementById("file" + i);
-      window.location(url);
-    }
-
-    function ChangeDateFormat(d) {
-      if (d == null) {
-        return;
+                  for (var i in json) {
+                      // alert(i);
+                      var url = "/uploadServlet?hno=" + json[i].hno;
+                      s = s + "<tr><th>" + json[i].hno + "</th>" +
+                          "<th>" + json[i].hcontent + "</th>" +
+                          "<th>" + ChangeDateFormat(json[i].beginTime) + "</th>" +
+                          "<th>" + ChangeDateFormat(json[i].endTime) + "</th>" +
+                          "<th><a href=\"/hfileDownloadServlet?hno=" + json[i].hno + "&hfile=" + json[i].hfile + "\">" + json[i].hfile + "</a></th>" +
+                          "<th><form action=" + url + " id=\"uploadFile" + i + "\" enctype=\"multipart/form-data\" method=\"post\">" +
+                          "<input type=\"file\" id= file" + i + " name=\"filename\" value=\"选择文件\"></form></th>" +
+                          "<th><input type=\"button\" onclick=\"submit(" + i + ")\" value=\"提交\"></th>" +
+                          "</tr>";
+                  }
+                  document.getElementById("hometr").insertAdjacentHTML("afterend", s);// = s
+                  oBody.innerHTML = s;
+                  //弹出返回过来的List对象
+                  J = json;
+              },
+              error: function () {
+                  // alert(json);
+                  alert("error,未登录状态，确认后跳转登录...");//弹出返回过来的List对象
+                  self.location = "index.html";
+              }
+          });
       }
-      //将时间戳转为int类型，构造Date类型
-      var date = new Date(parseInt(d.time, 10));
 
-      //月份得+1，且只有个位数时在前面+0
-      var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+      function upload(i, hno) {
+          var file = document.getElementById("file" + i);
+          window.location(url);
+      }
 
-      //日期为个位数时在前面+0
-      var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+      function ChangeDateFormat(d) {
+          if (d == null) {
+              return;
+          }
+          //将时间戳转为int类型，构造Date类型
+          var date = new Date(parseInt(d.time, 10));
 
-      //getFullYear得到4位数的年份 ，返回一串字符串
-      return date.getFullYear() + "-" + month + "-" + currentDate;
-    }
+          //月份得+1，且只有个位数时在前面+0
+          var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
 
-    window.onload = add;
-    function oncreate(){
-		var Oth = document.getElementById('table').getElementsByTagName('tr');
-		var Ocon = document.getElementById('con');
-		var Oconin = document.getElementById('con-in');
-		if(Oth.length>=12)
-		{
-			var len=0;
-			for(var i=0;i<Oth.length;i++)
-			{
-				len=len+Oth[i].clientHeight;		
-			}
-			len1 = len+95;
-			len2 =len+135;
-			Ocon.style.height = len1+'px';
-			Oconin.style.height = len2+'px';
-		}
-	}
-  </script> 
+          //日期为个位数时在前面+0
+          var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+
+          //getFullYear得到4位数的年份 ，返回一串字符串
+          return date.getFullYear() + "-" + month + "-" + currentDate;
+      }
+
+      window.onload = add;
+
+      function oncreate() {
+          var Oth = document.getElementById('table').getElementsByTagName('tr');
+          var Ocon = document.getElementById('con');
+          var Oconin = document.getElementById('con-in');
+          if (Oth.length >= 12) {
+              var len = 0;
+              for (var i = 0; i < Oth.length; i++) {
+                  len = len + Oth[i].clientHeight;
+              }
+              len1 = len + 95;
+              len2 = len + 135;
+              Ocon.style.height = len1 + 'px';
+              Oconin.style.height = len2 + 'px';
+          }
+      }
+  </script>
 </body>
 
 <script type="text/javascript">
-  var flag1 = 0;
-  $(function () {
-    $("#list1").click(function () {
-      flag1 += 1;
-      if (flag1 % 2 == 0) {
-        $("#list_fun1").fadeOut();
-      }
-      else {
-        $("#list_fun1").fadeIn();
-      }
+    var flag1 = 0;
+    $(function () {
+        $("#list1").click(function () {
+            flag1 += 1;
+            if (flag1 % 2 == 0) {
+                $("#list_fun1").fadeOut();
+            }
+            else {
+                $("#list_fun1").fadeIn();
+            }
+        })
     })
-  })
 </script>
 
 </html>
