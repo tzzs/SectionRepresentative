@@ -23,7 +23,7 @@
 	padding: 0px;
 }
 .lift-nav ul li{
-	width:25%;
+	width:30%;
 	height:70px;
 	line-height:70px;
 	float: left;
@@ -119,4 +119,18 @@ form .input-btn
 	color: white;
 	background-color: #85C5E0;
 	border: none;
+}
+.put_con{
+	width:100%;
+}
+.put_con table{
+	border: solid 1px;
+	border-collapse: collapse;
+	margin: auto;
+}
+.put_con table th{
+	width:150px;
+	height: 30px;
+	border-left: 1px solid;
+	border-bottom: 1px solid;
 }

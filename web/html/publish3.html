@@ -7,15 +7,16 @@
   <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css"/>
   <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css"/>
   <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/publish.css">
-  <link rel="stylesheet" media="screen and (max-width:943px) and (min-width:501px)" type="text/css"
+  <link rel="stylesheet" media="screen and (max-width:943px) and (min-width:521px)" type="text/css"
         href="../CSS/publish_ipad.css">
-  <link rel="stylesheet" media="screen and (max-width:500px)" type="text/css" href="../CSS/publish_min.css">
+  <link rel="stylesheet" media="screen and (max-width:520px)" type="text/css" href="../CSS/publish_min.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/footer.css"/>
   <script src="../JS/publish.js"></script>
   <script src="../JS/searchWork.js"></script>
-  <title>删除公告</title>
+  <title>已发布公告</title>
 </head>
 
-<body>
+<body onload="oncreate()">
   <div class="all_title">
     <div class="body">
       <div class="logo">
@@ -25,26 +26,7 @@
       </div>
       <div class="function">
         <div class="load_register">
-          <ul>
-            <li class="list_li">
-              <a id="list" class="list" href="javascript:;">
-                <img src="../img/list1.png">
-                <span id="list_span">列表</span>
-              </a>
-            </li>
-            <li>
-              <a class="register_nav" href="/logoutServlet">
-                <span>注销</span>
-              </a>
-              <!--<img src="../img/register.png">-->
-            </li>
-            <li>
-              <a href="manage.html">
-                <img src="../img/load.png">
-                <span></span>
-              </a>
-            </li>
-          </ul>
+          <a href="#">注销登录</a>
         </div>
         <div class="functions" id="list_fun">
           <ul id="nav_li">
@@ -82,12 +64,6 @@
       <div class="list_dd" id="list_fun1">
         <ul>
           <li class="list_li">
-            <a href="manage.html">我</a>
-          </li>
-          <li class="list_li">
-            <a href="/logoutServlet">注销</a>
-          </li>
-          <li class="list_li">
             <a href="main.html">首页</a>
           </li>
           <li class="list_li">
@@ -102,11 +78,13 @@
           <li class="list_li">
             <a href="manage.html">信息管理</a>
           </li>
+          <li class="list_li">
+            <a href="#">注销登录</a>
+          </li>
         </ul>
       </div>
     </div>
   </div>
-
   <div class="content" id="con1">
     <div class="content_in" id='cons'>
       <div class="lift-nav">
@@ -117,38 +95,65 @@
               <span>发布公告</span>
             </a>
           </li>
-          <li>
-            <a id="a2" href="publish1.html">
-              <img src="../img/amend.png">
-              <span>修改公告</span>
-            </a>
-          </li>
-          <li>
-            <a id="a3" href="publish2.html">
-              <img src="../img/query.png">
-              <span>查询公告</span>
-            </a>
-          </li>
           <li class="on">
-            <a id="a4" href="publish3.html">
-              <img src="../img/delete1.png">
-              <span>删除公告</span>
-            </a>
-          </li>
-          <li>
-            <a id="a5" href="publish4.html">
-              <img src="../img/delete.png">
-              <span>内容下载</span>
+            <a id="a3" href="publish3.html">
+              <img src="../img/query1.png">
+              <span>已发布公告</span>
             </a>
           </li>
         </ul>
       </div>
-      <div id="div4" class="delete_con">
-        <form action="/deleteHomeworkServlet">
-          <input type="text" id="textnum" name="number" placeholder="请输入作业号" autofocus>
-          <input type="submit" class="input-btn" value="查询">
+      <div id="div4" class="put_con">
+        <table id="table">
+          <tr>
+            <th>作业号</th>
+            <th>内容</th>
+            <th>作业附件</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>修改</th>
+            <th>删除</th>
+            <th>下载</th>
+          </tr>
+
+        </table>
+      </div>
+      <div class="pub3-xiugai" id="xiugai">
+        <form action="">
+          <div>
+            <span>内 容</span>
+            <input type="text" name="hcontent" class="form-con" placeholder="请输入公告内容">
+          </div>
+          <div>
+            <span>作业文件</span>
+            <input type="file" id="homefile" class="form-con" name="hfile" value="选择文件">
+            <!--<input type="text" class="form-con" name="hfile" placeholder="请输入作业范例文件名">-->
+          </div>
+          <div>
+            <span>开始时间</span>
+            <input type="datetime-local" name="beginTime" class="form-con" placeholder="请输入开始时间">
+          </div>
+          <div>
+            <span>结束时间</span>
+            <input type="datetime-local" name="endTime" class="form-con" placeholder="请输入结束时间">
+          </div>
+          <!--<div>-->
+          <!--<span>注意事项</span>-->
+          <!--<input type="text" name="subInfo" class="form-con" placeholder="请输入注意事项">-->
+          <!--</div>-->
+          <input type="submit" class="subbtn" value="提交">
         </form>
       </div>
+    </div>
+  </div>
+  <div id="footer">
+    <!--页脚-->
+    <div id="for">
+      <a href="serve2.html">关于我们</a> |
+      <a href="serve2.html">服务条款</a> |
+      <a href="serve2.html">帮助中心</a> |
+      <a href="serve2.html">联系我们</a>
+      <p>Copyright © 2018 Class Representative. 保留所有权利。</p>
     </div>
   </div>
 
@@ -158,19 +163,58 @@
         $("#list_ul li").click(function () {
             $("#list_ul li").eq($(this).index()).addClass("on").siblings().removeClass("on");
         })
-    })
+    });
     var flag1 = 0;
     $(function () {
         $("#list1").click(function () {
             flag1 += 1;
-            if (flag1 % 2 == 0) {
+            if (flag1 % 2 === 0) {
                 $("#list_fun1").fadeOut();
             }
             else {
                 $("#list_fun1").fadeIn();
             }
         })
-    })
+    });
+
+    function oncreate() {
+        var Oth = document.getElementById('table').getElementsByTagName('th');
+        var Ocon = document.getElementById('cons');
+        var Oconin = document.getElementById('con1');
+        var len = 0;
+        for (var i = 0; i < Oth.length; i += 8) {
+            len = len + Oth[i].clientHeight;
+        }
+        if (len >= 400) {
+
+            len1 = len + 95;
+            len2 = len + 135;
+            Ocon.style.height = len1 + 'px';
+            Oconin.style.height = len2 + 'px';
+        }
+    }
+
+    var t = document.getElementById("table");
+    var rows = t.getElementsByTagName("input");
+    var oXIU = document.getElementById("xiugai");
+    var oDIV = document.getElementById("div4");
+    //给tr绑定click事件
+    for (var i in rows) {
+        rows[i].onclick = rowClick;
+    }
+
+    function rowClick(e) {
+        var number = 0;
+        for (var j = 0; j < rows.length; j++) {
+            if (rows[j] === this) {
+                number = j + 1;
+            }
+        }
+        if (number !== 0) {
+            oXIU.style.display = 'block';
+            oDIV.style.display = 'none';
+        }
+    }
 </script>
 
 </html>

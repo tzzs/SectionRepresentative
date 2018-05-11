@@ -6,10 +6,10 @@
   <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css"/>
   <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css"/>
   <link rel="stylesheet" type="text/css" href="../CSS/add.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/footer.css">
   <title>添加关注</title>
   <script type="text/javaScript">
       var J;
-
       function test() {
           $.ajax({
               type: "POST", //请求方式
@@ -24,7 +24,7 @@
       }
   </script>
 </head>
-<body>
+<body onload="oncreate()">
   <div class="all_title">
     <div class="body">
       <div class="logo">
@@ -87,14 +87,34 @@
       </div>
     </div>
   </div>
-  <div class="add_content">
-    <div class="add_con_in">
+  <div class="add_content"  id="con-in">
+    <div class="add_con_in" id="con">
       <form action="/addAttentionServlet" method="post">
-        <input type="text" name="attention" class="textnum" placeholder="请输入账号" autofocus>
-        <input type="submit" class="input-btn" value="查询">
+        <input type="text" name="attention" class="textnum" placeholder="请输入账号">
+        <input type="submit" class="input-btn" value="添加">
       </form>
+    	<div class="table">
+    		<table id="table">
+    			<tr>
+    				<th>账号</th>
+    				<th>姓名</th>
+    				<th>邮箱</th>
+    				<th>学校</th>
+    			</tr>
+    		</table>
+    	</div>
     </div>
   </div>
+  <div id="footer">
+        <!--页脚-->
+        <div id="for">
+            <a href="serve2.html">关于我们</a> |
+            <a href="serve2.html">服务条款</a> |
+            <a href="serve2.html">帮助中心</a> |
+            <a href="serve2.html">联系我们</a> 
+            <p>Copyright © 2018 Class Representative. 保留所有权利。</p>
+        </div>
+    </div>
 </body>
 <script type="text/javascript">
     var flag1 = 0;
@@ -109,5 +129,22 @@
             }
         })
     })
+   function oncreate(){
+			var Oth = document.getElementById('table').getElementsByTagName('tr');
+			var Ocon = document.getElementById('con');
+			var Oconin = document.getElementById('con-in');
+			if(Oth.length>=12)
+			{
+				var len=0;
+				for(var i=0;i<Oth.length;i++)
+				{
+					len=len+Oth[i].clientHeight;	
+				}
+				len1 = len+95;
+				len2 =len+135;
+				Ocon.style.height = len1+'px';
+				Oconin.style.height = len2+'px';
+			}
+		}
 </script>
 </html>

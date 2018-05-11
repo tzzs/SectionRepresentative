@@ -7,10 +7,11 @@
   <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css"/>
   <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css"/>
   <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/publish.css">
-  <link rel="stylesheet" media="screen and (max-width:943px) and (min-width:501px)" type="text/css"
+  <link rel="stylesheet" media="screen and (max-width:943px) and (min-width:521px)" type="text/css"
         href="../CSS/publish_ipad.css">
-  <link rel="stylesheet" media="screen and (max-width:500px)" type="text/css" href="../CSS/publish_min.css">
+  <link rel="stylesheet" media="screen and (max-width:520px)" type="text/css" href="../CSS/publish_min.css">
   <script src="../JS/LiftEffect.js"></script>
+  <link rel="stylesheet" type="text/css" href="../CSS/footer.css"/>
   <title>添加公告</title>
 </head>
 
@@ -81,10 +82,10 @@
       <div class="list_dd" id="list_fun1">
         <ul>
           <li class="list_li">
-            <a href="manage.html">我</a>
+            <a href="index.html">登录</a>
           </li>
           <li class="list_li">
-            <a href="/logoutServlet">注销</a>
+            <a href="register.html">注册</a>
           </li>
           <li class="list_li">
             <a href="main.html">首页</a>
@@ -105,13 +106,8 @@
       </div>
     </div>
   </div>
-
   <div class="content" id="con1">
     <div class="content_in" id='cons'>
-
-      <div id="leftbar">
-
-      </div>
       <div class="lift-nav">
         <ul class="lift" id="list_ul">
           <li class="on">
@@ -121,41 +117,26 @@
             </a>
           </li>
           <li>
-            <a id="a2" href="publish1.html">
-              <img src="../img/amend.png">
-              <span>修改公告</span>
-            </a>
-          </li>
-          <li>
-            <a id="a3" href="publish2.html">
+            <a id="a3" href="publish3.html">
               <img src="../img/query.png">
-              <span>查询公告</span>
-            </a>
-          </li>
-          <li>
-            <a id="a4" href="publish3.html">
-              <img src="../img/delete.png">
-              <span>删除公告</span>
-            </a>
-          </li>
-          <li>
-            <a id="a5" href="publish4.html">
-              <img src="../img/delete.png">
-              <span>内容下载</span>
+              <span>已发布公告</span>
             </a>
           </li>
         </ul>
       </div>
-
       <div id="div1" class="publish_con">
         <form action="/publishServlet" method="post" enctype=multipart/form-data>
+          <!--<div>-->
+          <!--<span>公告名称</span>-->
+          <!--<input type="text" name="hno" class="form-con" placeholder="请输入公告名称" autofocus>-->
+          <!--</div>-->
           <div>
-            <span>作业内容</span>
+            <span>内 容</span>
             <input type="text" name="hcontent" class="form-con" placeholder="请输入公告内容">
           </div>
           <div>
             <span>作业文件</span>
-            <input type="file" class="form-con" name="hfile" value="选择文件">
+            <input type="file" id="homefile" class="form-con" name="hfile" value="选择文件">
             <!--<input type="text" class="form-con" name="hfile" placeholder="请输入作业范例文件名">-->
           </div>
           <div>
@@ -172,78 +153,32 @@
           <!--</div>-->
           <input type="submit" class="subbtn" value="提交">
         </form>
+
       </div>
-      <!-- <div id="div2" class="amend_con">
-        <form action="">
-          <input type="text" class="textnum" placeholder="请输入作业号" autofocus>
-          <input type="submit" class="input-btn" value="搜索">
-        </form>
-      </div>
-      <div id="div3" class="query_con">
-        <form action="">
-          <input type="text" class="textnum" placeholder="请输入作业号" autofocus>
-          <input type="submit" class="input-btn" value="查询">
-        </form>
-      </div>
-      <div id="div4" class="delete_con">
-        <form action="">
-          <input type="text" class="textnum" placeholder="请输入作业号" autofocus>
-          <input type="submit" class="input-btn" value="删除">
-        </form> -->
     </div>
-  </div>
-
+</div>
+  <div id="footer">
+        <!--页脚-->
+        <div id="for">
+            <a href="serve2.html">关于我们</a> |
+            <a href="serve2.html">服务条款</a> |
+            <a href="serve2.html">帮助中心</a> |
+            <a href="serve2.html">联系我们</a> 
+            <p>Copyright © 2018 Class Representative. 保留所有权利。</p>
+        </div>
+    </div>
 </body>
-
 <script type="text/javascript">
     $(function () {
         $("#list_ul li").click(function () {
             $("#list_ul li").eq($(this).index()).addClass("on").siblings().removeClass("on");
         })
-    });
-    var img = ['../img/publish.png', '../img/amend.png', '../img/query.png', '../img/delete.png'];
-    var img1 = ['../img/publish1.png', '../img/amend1.png', '../img/query1.png', '../img/delete1.png']
-    var arr = document.getElementById('list_ul').getElementsByTagName('a');
-    var arr2 = document.getElementById('list_ul').getElementsByTagName('img');
-    var arr1 = [document.getElementById('div1'), document.getElementById('div2'), document.getElementById('div3'), document.getElementById('div4')];
-    var i = 0, j = 0;
-    arr[0].onclick = function () {
-        for (j = 0; j < arr1.length; j++) {
-            arr1[j].style.display = 'none';
-            arr2[j].src = img[j];
-        }
-        arr1[0].style.display = 'block';
-        arr2[0].src = img1[0];
-    };
-    arr[1].onclick = function () {
-        for (j = 0; j < arr1.length; j++) {
-            arr1[j].style.display = 'none';
-            arr2[j].src = img[j];
-        }
-        arr1[1].style.display = 'block';
-        arr2[1].src = img1[1];
-    };
-    arr[2].onclick = function () {
-        for (j = 0; j < arr1.length; j++) {
-            arr1[j].style.display = 'none';
-            arr2[j].src = img[j];
-        }
-        arr1[2].style.display = 'block';
-        arr2[2].src = img1[2];
-    };
-    arr[3].onclick = function () {
-        for (j = 0; j < arr1.length; j++) {
-            arr1[j].style.display = 'none';
-            arr2[j].src = img[j];
-        }
-        arr1[3].style.display = 'block';
-        arr2[3].src = img1[3];
-    };
+    })
     var flag1 = 0;
     $(function () {
         $("#list1").click(function () {
             flag1 += 1;
-            if (flag1 % 2 === 0) {
+            if (flag1 % 2 == 0) {
                 $("#list_fun1").fadeOut();
             }
             else {
