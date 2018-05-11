@@ -181,14 +181,13 @@
     function submit(hno) {
         var thisform = document.forms["form"];
         thisform.action = "/updateHomeworkServlet?hno=" + hno;
-        alert(thisform.action);
+        // alert(thisform.action);
         // thisform.submit();
     }
 
     function submitform() {
         var url = location.search;
         var hno = url.split("=")[1];
-        // alert(hno);
         submit(hno);
     }
 
