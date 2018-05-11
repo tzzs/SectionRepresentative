@@ -1,0 +1,33 @@
+@charset "UTF-8";
+.content{
+	width:100%;
+	background-color: #CCE4FF;
+	padding-top: 30px;
+	padding-bottom:30px;
+	margin: auto;
+	position: relative;
+}
+.content_in{
+	width:80%;
+	background-color: #FEFCFA;
+	margin: auto;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+.content_in h2{
+	width:90%;
+	color: #85C5E0;
+	margin-left: 20px;
+	margin-top:10px;
+	font-weight:bold;
+	height: 30px;
+	border-bottom: #85C5E0 1px solid;
+}
+.content_in div div{
+	width:80%;
+}
+.content_in div div p{
+	margin-left:50px;
+	text-indent:2em;
+	margin-top: 10px;
+}
