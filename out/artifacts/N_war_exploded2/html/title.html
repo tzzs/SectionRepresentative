@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+	<script src="../JS/jquery-3.2.1.js"></script>
+<link rel="stylesheet" type="text/css" href="../CSS/title.css"/>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+$(function() {
+	$("#nav_li li").click(function() {
+		$("#nav_li li").eq($(this).index()).addClass("li_on").siblings().removeClass("li_on");
+	})
+})
+</script>
+</html>

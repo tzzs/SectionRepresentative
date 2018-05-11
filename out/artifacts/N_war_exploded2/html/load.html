@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../CSS/load.css"/>
+</head>
+<body  onload="createCode()">
+		<div class="load_main">
+			<div class="load">
+					<div id="load_in">
+						<div class="change">
+							<span>用户登录</span>
+							<a href="register.html">注册</a>
+						</div>
+	            		<div class="load_select">
+	            			<div class="load_account" id="account">
+	            				<a id="account_a" href="javascript:;">账号登录</a>
+	            			</div>
+	            			<div class="load_phone" id="phone">
+	            				<a id="phone_a" href="javascript:;">手机号登录</a>
+	            			</div>
+	            		</div>
+	            		<div  class="load_form_account" id="form_account">
+	            			<div class="error" id="form_error">
+	            				<img src="../img/error.png"/> <p id="error">账号/密码有误</p>
+	            			</div>
+	            				<input id="username" type="text" name="账号" size="40" maxlength="11" placeholder="请输入账号" autofocus />
+	            				<input id="password" type="password" name="密码" size="44" maxlength="16" placeholder="请输入密码" />
+	            			<div class="code">
+	            				<input id="inputcode" type="text" name="验证码" maxlength="8px" placeholder="请输入验证码" />
+	            				<div id="checkCode"></div>
+	            				<a href="#" onclick="createCode()">换一张</a>
+	            			</div>
+	            			<div class="">
+	            				<button id="btn">登录</button>
+	            			</div>
+	            			<a id="forgetpwd" href="#">忘记密码？</a>
+	            		</div>
+	            		<div class="load_form_phone" id="form_phone" style="display: none;">
+	            			<div class="error" id="form_error1">
+	            				<img src="../img/error.png"/> <p id="error1">账号/密码有误</p>
+	            			</div>
+	            			<input id="phonenumber" type="text" name="账号" size="40" maxlength="11" placeholder="请输入手机号" autofocus />
+	            			<div class="code1">
+	            				<button id="btn1">获取动态密码</button>
+	            				<input id="passnumber" type="password" name="密码" size="44" maxlength="16" placeholder="请输入动态密码" />
+	            			</div>
+	            			<div class="">
+	            				<button id="btn2">登录</button>
+	            			</div>
+	            			<a id="forget" href="#">忘记密码？</a>
+	       				</div>
+	       			</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var oLoad = document.getElementById('load_in');
+		var oBtn1 = document.getElementById('btn');
+		var oBtn2= document.getElementById('btn2');
+		var oForm1 = document.getElementById('form_error1');
+		var oForm = document.getElementById('form_error');
+		oBtn1.onclick = select_form;
+		oBtn2.onclick = phone_form;
+		
+		//获取验证码
+		function createCode() 
+		{
+			 code = "";
+			 var codeLength = 4; //验证码的长度
+			 var checkCode = document.getElementById("checkCode");
+			 var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+			      'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+			      'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //所有候选组成验证码的字符，当然也可以用中文的
+			 for(var i = 0; i < codeLength; i++) 
+			 {
+			  var charNum = Math.floor(Math.random() * 52);
+			  code += codeChars[charNum];
+			 }
+			 if(checkCode) 
+			 {
+			  checkCode.className = "code";
+			  checkCode.innerHTML = code;
+			 }
+		}
+		
+		var oAccount = document.getElementById('account');
+		var oPhone = document.getElementById('phone');
+		var oFormAccount = document.getElementById('form_account');
+		var oFormPhone = document.getElementById('form_phone');
+		var oAccountA = document.getElementById('account_a');
+		var oPhoneA = document.getElementById('phone_a');
+		
+		//点击账号登录
+		oAccount.onclick = function(){
+			oAccountA.style.color = '#4134FF';
+			oPhoneA.style.color = 'black';
+			oAccountA.style.borderBottom = 'solid #4134FF 2px';
+			oFormAccount.style.display = 'block';
+			oFormPhone.style.display = 'none';
+			oPhoneA.style.borderBottom = 'none';
+			oLoad.style.height = '300px';
+			oForm1.style.display = 'none';
+		}
+		function select_form(){
+			var oUsername = document.getElementById('username').value;
+			var oPassword = document.getElementById('password').value;
+			var oInputcode = document.getElementById('inputcode').value;
+			var oError = document.getElementById('error');
+			if(oUsername==""||oPassword == "")
+			{
+				oError.innerHTML = '请输入账号/密码';
+			}
+			else if(oInputcode=="")
+			{
+				oError.innerHTML = '请输入验证码';
+			}
+			else if(oInputcode.toUpperCase() != code.toUpperCase())
+			{
+				oError.innerHTML = '验证码输入有误';
+				createCode();
+			}
+			else
+			{
+				window.location.href='main.html';
+			}
+			oLoad.style.height = '350px';
+			oForm.style.display = 'block';
+		}
+		
+		//点击手机号登录
+		oPhone.onclick = function(){
+			oPhoneA.style.color = '#4134FF';
+			oAccountA.style.color = 'black';
+			oPhoneA.style.borderBottom= 'solid #4134FF 2px';
+			oFormAccount.style.display = 'none';
+			oFormPhone.style.display = 'block';
+			oAccountA.style.borderBottom = 'none';
+			oLoad.style.height = '250px';
+			oForm.style.display = 'none';
+		}
+		function phone_form(){
+			var oError1 = document.getElementById('error1');
+			var oPhonenumber = document.getElementById('phonenumber').value;
+			if(oPhonenumber=="")
+			{
+				oError1.innerHTML = '请输入手机号';
+			}
+			else{
+				window.location.href='main.html';
+			}
+			oLoad.style.height = '300px';
+			oForm1.style.display = 'block';
+		}
+	</script>
+
+</html>

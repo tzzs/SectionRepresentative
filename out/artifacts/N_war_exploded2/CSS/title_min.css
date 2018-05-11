@@ -1,0 +1,56 @@
+@charset "UTF-8";
+*{
+	margin:0px;
+}
+.all_title{
+	width:100%;
+	border-bottom: solid 1px #85C5E0;
+}
+.body{
+	width:100%;
+	height:70px;
+	margin: auto;
+}
+.logo img{
+	height: 70px;
+}
+.function #list_span{
+	display: none;
+}
+.function .load_register{
+	position: absolute;
+	top:20px;
+	right:10px;
+}
+.function div ul li{
+	list-style-type: none;
+	float: right;
+	margin-left: 20px;
+}
+.function{
+	margin-top: 0px;
+}
+.functions{
+	z-index:9999;
+	position:relative;
+	display: none;
+}
+.functions ul{
+	padding:0px;
+}
+.functions ul li{
+	list-style-type: none;
+	width:100%;
+	height: 30px;
+	float:left;
+	background-color: #1296DB;
+	border-bottom: dotted 1px #1244DB;
+}
+.functions ul li a{
+	display:block;
+	text-decoration: none;
+	height: 30px;
+	line-height: 30px;
+	margin-left: 20px;
+	color: #fefefe;
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <script src="../JS/jquery-3.2.1.js"></script>
+  <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/title.css" />
+  <link rel="stylesheet" media="screen and (max-width:943px)" type="text/css" href="../CSS/title_ipad.css" />
+  <link rel="stylesheet" media="screen and (min-width:944px)" type="text/css" href="../CSS/publish.css">
+  <link rel="stylesheet" media="screen and (max-width:943px) and (min-width:521px)" type="text/css" href="../CSS/publish_ipad.css">
+  <link rel="stylesheet" media="screen and (max-width:520px)" type="text/css" href="../CSS/publish_min.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/footer.css"/>
+  <script src="../JS/publish.js"></script>
+  <script src="../JS/searchWork.js"></script>
+  <title>更新公告</title>
+</head>
+
+<body>
+  <div class="all_title">
+    <div class="body">
+      <div class="logo">
+        <a href="main.html">
+          <img alt="" src="../img/LOGO.png">
+        </a>
+      </div>
+      <div class="function">
+        <div class="load_register">
+          <a href="#">注销登录</a>
+        </div>
+        <div class="functions" id="list_fun">
+          <ul id="nav_li">
+            <li>
+              <a href="manage.html">信息管理</a>
+            </li>
+            <li>
+              <a href="add.html">添加关注</a>
+            </li>
+            <li>
+              <a href="my.html">我的作业</a>
+            </li>
+            <li class="li_on">
+              <a href="publish.html">公告</a>
+            </li>
+            <li>
+              <a href="main.html">首页</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="list_dl">
+    <div class="logo">
+      <a href="main.html">
+        <img alt="" src="../img/LOGO.png">
+      </a>
+    </div>
+    <div class="list_dt">
+      <a class="list_img" id="list1" href="javascript:">
+        <img src="../img/list1.png">
+        <span>列表</span>
+      </a>
+      <div class="list_dd" id="list_fun1">
+        <ul>
+          <li class="list_li">
+            <a href="main.html">首页</a>
+          </li>
+          <li class="list_li">
+            <a href="publish.html">公告</a>
+          </li>
+          <li class="list_li">
+            <a href="my.html">我的作业</a>
+          </li>
+          <li class="list_li">
+            <a href="add.html">添加关注</a>
+          </li>
+          <li class="list_li">
+            <a href="manage.html">信息管理</a>
+          </li>
+
+          <li class="list_li">
+            <a href="#">注销登录</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="content" id="con1">
+    <div class="content_in" id='cons'>
+      <div class="lift-nav">
+        <ul class="lift" id="list_ul">
+          <li>
+            <a id="a1" href="publish.html">
+              <img src="../img/publish.png">
+              <span>发布公告</span>
+            </a>
+          </li>
+          <li class="on">
+            <a id="a2" href="publish1.html">
+              <img src="../img/amend1.png">
+              <span>修改公告</span>
+            </a>
+          </li>
+          <li>
+            <a id="a3" href="publish3.html">
+              <img src="../img/query.png">
+              <span>已公布公告</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id="div2" class="amend_con">
+        <form action="/searchServlet" id="search">
+          <input type="text" id="textnum" name="hno" placeholder="请输入作业号" autofocus>
+          <button id="input_search" class="input-btn" onclick="update()">搜索</button>
+        </form>
+        <form action="/updateHomeworkServlet" id="updateForm" style="display: none;">
+          <div>
+            <span>公告名称</span>
+            <input type="text" id="form-con1" name="hno" placeholder="请输入公告名称" autofocus>
+          </div>
+          <div>
+            <span>内 容</span>
+            <input type="text" id="form-con2" name="hcontent" placeholder="请输入公告内容">
+          </div>
+          <div>
+            <span>开始时间</span>
+            <input type="datetime-local" id="form-con3" name="beginTime" placeholder="请输入开始时间">
+          </div>
+          <div>
+            <span>结束时间</span>
+            <input type="datetime-local" id="form-con4" name="endTime" placeholder="请输入结束时间">
+          </div>
+          <div>
+            <span>注意事项</span>
+            <input type="text" id="form-con5" name="subInfo" placeholder="请输入注意事项">
+          </div>
+          <input id="submit" type="submit" class="subbtn" value="提交">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+        <!--页脚-->
+        <div id="for">
+            <a href="serve2.html">关于我们</a> |
+            <a href="serve2.html">服务条款</a> |
+            <a href="serve2.html">帮助中心</a> |
+            <a href="serve2.html">联系我们</a> 
+            <p>Copyright © 2018 Class Representative. 保留所有权利。</p>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+  $(function () {
+    $("#list_ul li").click(function () {
+      $("#list_ul li").eq($(this).index()).addClass("on").siblings().removeClass("on");
+    })
+  });
+  var flag1 = 0;
+  $(function () {
+    $("#list1").click(function () {
+      flag1 += 1;
+      if (flag1 % 2 === 0) {
+        $("#list_fun1").fadeOut();
+      }
+      else {
+        $("#list_fun1").fadeIn();
+      }
+    })
+  });
+  function update() {
+    document.getElementById("search").submit();
+    document.getElementById("updateForm").style.display = "inline";
+    //获取结果
+  }
+
+</script>
+
+</html>
