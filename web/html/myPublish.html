@@ -113,7 +113,7 @@
         <div class="my_con_in">
             <table id="homework" border="1">
                 <tr id="hometr">
-                    <th>名称</th>
+                    <th>作业号</th>
                     <th>作业内容</th>
                     <th>作业范例</th>
                     <th>开始时间</th>
@@ -132,7 +132,7 @@
     $(function () {
         $("#list1").click(function () {
             flag1 += 1;
-            if (flag1 % 2 == 0) {
+            if (flag1 % 2 === 0) {
                 $("#list_fun1").fadeOut();
             }
             else {

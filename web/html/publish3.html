@@ -26,7 +26,7 @@
       </div>
       <div class="function">
         <div class="load_register">
-          <a href="#">注销登录</a>
+          <a href="/logoutServlet">注销登录</a>
         </div>
         <div class="functions" id="list_fun">
           <ul id="nav_li">
@@ -79,7 +79,7 @@
             <a href="manage.html">信息管理</a>
           </li>
           <li class="list_li">
-            <a href="#">注销登录</a>
+            <a href="/logoutServlet">注销登录</a>
           </li>
         </ul>
       </div>
@@ -115,69 +115,7 @@
             <th>删除</th>
             <th>下载</th>
           </tr>
-          <!--<tr>-->
-          <!--<th>作业号</th>-->
-          <!--<th>内容阿什顿发卡行说的收到发货速度分解哈市啊水电费金卡和速度山东警方哈卡</th>-->
-          <!--<th>作业附件</th>-->
-          <!--<th>开始时间</th>-->
-          <!--<th>结束时间</th>-->
-          <!--<th>-->
-          <!--<input type="button" value="修改">-->
-          <!--</th>-->
-          <!--<th>删除</th>-->
-          <!--<th>下载</th>-->
-          <!--</tr>-->
-          <!--<tr>-->
-          <!--<th>作业号</th>-->
-          <!--<th>内容阿什顿发卡行说的收到发货速度分解哈市啊水电费金卡和速度山东警方哈卡</th>-->
-          <!--<th>作业附件</th>-->
-          <!--<th>开始时间</th>-->
-          <!--<th>结束时间</th>-->
-          <!--<th>-->
-          <!--<input type="button" value="修改">-->
-          <!--</th>-->
-          <!--<th>删除</th>-->
-          <!--<th>下载</th>-->
-          <!--</tr>-->
-          <!--<tr>-->
-          <!--<th>作业号</th>-->
-          <!--<th>内容阿什顿发卡行说的收到发货速度分解哈市啊水电费金卡和速度山东警方哈卡</th>-->
-          <!--<th>作业附件</th>-->
-          <!--<th>开始时间</th>-->
-          <!--<th>结束时间</th>-->
-          <!--<th>-->
-          <!--<input type="button" value="修改">-->
-          <!--</th>-->
-          <!--<th>删除</th>-->
-          <!--<th>下载</th>-->
-          <!--</tr>-->
         </table>
-      </div>
-      <div class="pub3-xiugai" id="xiugai">
-        <form action="">
-          <div>
-            <span>内 容</span>
-            <input type="text" name="hcontent" class="form-con" placeholder="请输入公告内容">
-          </div>
-          <div>
-            <span>作业文件</span>
-            <input type="file" id="homefile" class="form-con" name="hfile" value="选择文件">
-            <!--<input type="text" class="form-con" name="hfile" placeholder="请输入作业范例文件名">-->
-          </div>
-          <div>
-            <span>开始时间</span>
-            <input type="datetime-local" name="beginTime" class="form-con" placeholder="请输入开始时间">
-          </div>
-          <div>
-            <span>结束时间</span>
-            <input type="datetime-local" name="endTime" class="form-con" placeholder="请输入结束时间">
-          </div>
-          <!--<div>-->
-          <!--<span>注意事项</span>-->
-          <!--<input type="text" name="subInfo" class="form-con" placeholder="请输入注意事项">-->
-          <!--</div>-->
-          <input type="submit" class="subbtn" value="提交">
-        </form>
       </div>
     </div>
   </div>
@@ -229,27 +167,27 @@
         }
     }
 
-    var t = document.getElementById("table");
-    var rows = t.getElementsByTagName("input");
-    var oXIU = document.getElementById("xiugai");
-    var oDIV = document.getElementById("div4");
-    //给tr绑定click事件
-    for (var i in rows) {
-        rows[i].onclick = rowClick;
-    }
-
-    function rowClick(e) {
-        var number = 0;
-        for (var j = 0; j < rows.length; j++) {
-            if (rows[j] === this) {
-                number = j + 1;
-            }
-        }
-        if (number !== 0) {
-            oXIU.style.display = 'block';
-            oDIV.style.display = 'none';
-        }
-    }
+    // var t = document.getElementById("table");
+    // var rows = t.getElementsByTagName("input");
+    // var oXIU = document.getElementById("xiugai");
+    // var oDIV = document.getElementById("div4");
+    // //给tr绑定click事件
+    // for (var i in rows) {
+    //     rows[i].onclick = rowClick;
+    // }
+    //
+    // function rowClick(e) {
+    //     var number = 0;
+    //     for (var j = 0; j < rows.length; j++) {
+    //         if (rows[j] === this) {
+    //             number = j + 1;
+    //         }
+    //     }
+    //     if (number !== 0) {
+    //         oXIU.style.display = 'block';
+    //         oDIV.style.display = 'none';
+    //     }
+    // }
 
     function show() {
         $.ajax({
@@ -306,6 +244,18 @@
 
         //getFullYear得到4位数的年份 ，返回一串字符串
         return date.getFullYear() + "-" + month + "-" + currentDate + " " + hour + ":" + minute;
+    }
+
+    function update(hno) {
+        window.location.href = "update.html?hno=" + hno;
+    }
+
+    function download(hno) {
+        window.location.href = "/downloadZipServlet?hno=" + hno;
+    }
+
+    function delet(hno) {
+        window.location.href = "/deleteHomeworkServlet?hno=" + hno;
     }
 </script>
 

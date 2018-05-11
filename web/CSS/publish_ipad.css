@@ -15,9 +15,17 @@
 	margin: auto;
 	padding-top:20px;
 }
+.content_in1{
+	width:80%;
+	height: 450px;
+	background-color: #FEFCFA;
+	margin: auto;
+	padding-top:20px;
+}
 .lift-nav{
 	width:100%;
 	height: 70px;
+	background-color: #FEFCFA;
 }
 .lift-nav ul{
 	padding: 0px;
@@ -28,7 +36,7 @@
 	line-height:70px;
 	float: left;
 	list-style-type: none;
-	background-color: white;
+	background-color: #FEFCFA;
 }
 .lift-nav li a:hover{
 	color:#85C5E0;
@@ -80,7 +88,7 @@
 	width:60%;
 	height: 32px;
 }
-.publish_con .subbtn,.amend_con .subbtn{
+.publish_con .subbtn,.amend_con .subbtn,.pub3-xiugai .subbtn{
 	width:80px;
 	height: 40px;
 	background-color: #85C5E0;
@@ -133,4 +141,31 @@ form .input-btn
 	height: 30px;
 	border-left: 1px solid;
 	border-bottom: 1px solid;
+}
+.pub3-xiugai{
+	width:1005;
+}
+.pub3-xiugai form{
+	width:100%;
+	height: 300px;
+}
+.pub3-xiugai form div{
+	width:100%;
+	height:34px;
+	float: left;
+	margin-top: 10px;
+}
+.pub3-xiugai form span{
+	float: left;
+	margin-left: 20px;
+	width:100px;
+	height: 34px;
+	display: block;
+	line-height: 34px;
+	text-align: center;
+}
+.pub3-xiugai form .form-con
+{
+	width:65%;
+	height: 32px;
 }

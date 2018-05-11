@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "deleteHomeworkServlet")
+@WebServlet(name = "deleteHomeworkServlet",urlPatterns = "/deleteHomeworkServlet")
 public class deleteHomeworkServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String hno = request.getParameter("hno");
@@ -23,6 +23,7 @@ public class deleteHomeworkServlet extends HttpServlet {
                 } else {
                     System.out.println("非法删除");
                 }
+                response.sendRedirect("html/publish3.html");
                 return;
             }
         }

@@ -176,6 +176,9 @@
           window.location(url);
       }
 
+      /**
+       * @return {string}
+       */
       function ChangeDateFormat(d) {
           if (d == null) {
               return;
@@ -218,7 +221,7 @@
     $(function () {
         $("#list1").click(function () {
             flag1 += 1;
-            if (flag1 % 2 == 0) {
+            if (flag1 % 2 === 0) {
                 $("#list_fun1").fadeOut();
             }
             else {

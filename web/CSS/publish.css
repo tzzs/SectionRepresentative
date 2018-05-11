@@ -15,11 +15,21 @@
 	margin: auto;
 	padding-top:20px;
 }
+.content_in1{
+	width:90%;
+	height: 400px;
+	background-color: #FEFCFA;
+	margin: auto;
+	padding-top:20px;
+}
+.content_in1 div{
+	float: left;
+}
 .content_in div{
 	float: left;
 }
 .lift-nav{
-	width: 25%;
+	width: 20%;
 	height:300px;
 }
 .lift-nav li{
@@ -121,7 +131,7 @@ form .input-btn
 	border: none;
 }
 .put_con{
-	width:70%;
+	width:75%;
 }
 .put_con table{
 	border: solid 1px;
@@ -135,7 +145,6 @@ form .input-btn
 	border-bottom: 1px solid;
 }
 .pub3-xiugai{
-	display: none;
 	width:70%;
 }
 .pub3-xiugai form{

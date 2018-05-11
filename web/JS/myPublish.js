@@ -14,7 +14,7 @@ function show() {
                 var url = "/uploadServlet?hno=" + json[i].hno;
                 s = s + "<tr><th>" + json[i].hno + "</th>" +
                     "<th>" + json[i].hcontent + "</th>" +
-                    "<th>" + json[i].hfile + "</th>" +
+                    "<th><a href=\"/hfileDownloadServlet?hno=" + json[i].hno + "&hfile=" + json[i].hfile + "\">" + json[i].hfile + "</a></th>" +
                     "<th>" + DateFormat(json[i].beginTime) + "</th>" +
                     "<th>" + DateFormat(json[i].endTime) + "</th>" +
                     // "<th>" + json[i].beginTime + "</th>" +

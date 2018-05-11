@@ -145,7 +145,7 @@
     });
 
     function oncreate() {
-        var Oth = document.getElementById('table').getElementsByTagName('tr');
+        var Oth = document.getElementById('homework').getElementsByTagName('tr');
         var Ocon = document.getElementById('con');
         var Oconin = document.getElementById('con-in');
         if (Oth.length >= 12) {
@@ -158,6 +158,7 @@
 
     function show() {
         var url = location.search;
+        alert(url);
         var theObject = {};
         if (url.indexOf("?") !== -1) {
             var str = url.substr(1);

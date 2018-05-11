@@ -10,6 +10,7 @@
   <title>添加关注</title>
   <script type="text/javaScript">
       var J;
+
       function test() {
           $.ajax({
               type: "POST", //请求方式
@@ -34,7 +35,7 @@
         <div class="load_register">
           <ul>
             <li class="list_li">
-              <a id="list" class="list" href="javascript:;"><img src="../img/list1.png"><span
+              <a id="list" class="list" href="javascript:"><img src="../img/list1.png"><span
                       id="list_span">列表</span></a>
             </li>
             <li>
@@ -73,7 +74,7 @@
       <a href="main.html"><img alt="" src="../img/LOGO.png"></a>
     </div>
     <div class="list_dt">
-      <a class="list_img" id="list1" href="javascript:;"><img src="../img/list1.png"><span>列表</span></a>
+      <a class="list_img" id="list1" href="javascript:"><img src="../img/list1.png"><span>列表</span></a>
       <div class="list_dd" id="list_fun1">
         <ul>
           <li class="list_li"><a href="index.html">登录</a></li>
@@ -87,64 +88,63 @@
       </div>
     </div>
   </div>
-  <div class="add_content"  id="con-in">
+  <div class="add_content" id="con-in">
     <div class="add_con_in" id="con">
       <form action="/addAttentionServlet" method="post">
         <input type="text" name="attention" class="textnum" placeholder="请输入账号">
         <input type="submit" class="input-btn" value="添加">
       </form>
-    	<div class="table">
-    		<table id="table">
-    			<tr>
-    				<th>账号</th>
-    				<th>姓名</th>
-    				<th>邮箱</th>
-    				<th>学校</th>
-    			</tr>
-    		</table>
-    	</div>
+      <div class="table">
+        <table id="table">
+          <tr>
+            <th>账号</th>
+            <th>姓名</th>
+            <th>邮箱</th>
+            <th>学校</th>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
   <div id="footer">
-        <!--页脚-->
-        <div id="for">
-            <a href="serve2.html">关于我们</a> |
-            <a href="serve2.html">服务条款</a> |
-            <a href="serve2.html">帮助中心</a> |
-            <a href="serve2.html">联系我们</a> 
-            <p>Copyright © 2018 Class Representative. 保留所有权利。</p>
-        </div>
+    <!--页脚-->
+    <div id="for">
+      <a href="serve2.html">关于我们</a> |
+      <a href="serve2.html">服务条款</a> |
+      <a href="serve2.html">帮助中心</a> |
+      <a href="serve2.html">联系我们</a>
+      <p>Copyright © 2018 Class Representative. 保留所有权利。</p>
     </div>
+  </div>
 </body>
 <script type="text/javascript">
     var flag1 = 0;
     $(function () {
         $("#list1").click(function () {
             flag1 += 1;
-            if (flag1 % 2 == 0) {
+            if (flag1 % 2 === 0) {
                 $("#list_fun1").fadeOut();
             }
             else {
                 $("#list_fun1").fadeIn();
             }
         })
-    })
-   function oncreate(){
-			var Oth = document.getElementById('table').getElementsByTagName('tr');
-			var Ocon = document.getElementById('con');
-			var Oconin = document.getElementById('con-in');
-			if(Oth.length>=12)
-			{
-				var len=0;
-				for(var i=0;i<Oth.length;i++)
-				{
-					len=len+Oth[i].clientHeight;	
-				}
-				len1 = len+95;
-				len2 =len+135;
-				Ocon.style.height = len1+'px';
-				Oconin.style.height = len2+'px';
-			}
-		}
+    });
+
+    function oncreate() {
+        var Oth = document.getElementById('table').getElementsByTagName('tr');
+        var Ocon = document.getElementById('con');
+        var Oconin = document.getElementById('con-in');
+        if (Oth.length >= 12) {
+            var len = 0;
+            for (var i = 0; i < Oth.length; i++) {
+                len = len + Oth[i].clientHeight;
+            }
+            len1 = len + 95;
+            len2 = len + 135;
+            Ocon.style.height = len1 + 'px';
+            Oconin.style.height = len2 + 'px';
+        }
+    }
 </script>
 </html>

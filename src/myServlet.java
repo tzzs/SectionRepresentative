@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 @WebServlet(name = "myServlet", urlPatterns = "/myServlet")
 public class myServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=utf-8");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         Cookie[] cookies = request.getCookies();

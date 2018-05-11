@@ -53,17 +53,21 @@ public class homeworkDao {
     public void update(Homework homework) {
         try {
             init();
-            String sql = "update user set hcontent=?,hdir=?,hfile=?,subInfo=?,issuer=?,begintime=?,endtime=? where hno=?";
+            String sql = "update homework set hcontent=?,hfile=?,begintime=?,endtime=? where hno=?";
+
+            System.out.println(homework.getHcontent());
+            System.out.println(homework.getHfile());
+            System.out.println((Date) homework.getBeginTime());
+            System.out.println((Date) homework.getEndTime());
+            System.out.println(homework.getHno());
+
             ps = connection.prepareStatement(sql);
 
             ps.setString(1, homework.getHcontent());
-            ps.setString(2, homework.getHdir());
-            ps.setString(3, homework.getHfile());
-            ps.setString(4, homework.getSubInfo());
-            ps.setString(5, homework.getSubInfo());
-            ps.setDate(6, (Date) homework.getBeginTime());
-            ps.setDate(7, (Date) homework.getEndTime());
-            ps.setString(8, homework.getHno());
+            ps.setString(2, homework.getHfile());
+            ps.setDate(3, (Date) homework.getBeginTime());
+            ps.setDate(4, (Date) homework.getEndTime());
+            ps.setString(5, homework.getHno());
 
             ps.executeUpdate();
         } catch (SQLException e) {

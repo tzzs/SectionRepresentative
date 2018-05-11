@@ -29,44 +29,57 @@ public class updateHomeworkServlet extends HttpServlet {
         if (account != null) {
             Homework homework = new Homework();
 
-            DateFormat format = new SimpleDateFormat("yyyy-MM-dd-hh:ss");
-
-            String hno = request.getParameter("hno");
-            String content = request.getParameter("hcontent");
-            String example = request.getParameter("hfile");
-            String begin = request.getParameter("beginTime");
-            begin = begin.replace("T", "-");
-            System.out.println(begin);
-            Date beginTime = null;
-            try {
-                beginTime = new Date(format.parse(begin).getTime());
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            String end = request.getParameter("endTime");
-            end = end.replace("T", "-");
-            System.out.println(end);
-            Date endTime = null;
-            try {
-                endTime = new Date(format.parse(end).getTime());
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            String subInfo = request.getParameter("subInfo");
-
-            homework.setHno(hno);
-            homework.setHcontent(content);
-            homework.setHdir("/" + hno);
-            homework.setBeginTime(beginTime);
-            homework.setEndTime(endTime);
-            homework.setSubInfo(subInfo);
-            homework.setIssuer(account);
-
             homeworkDao hd = new homeworkDao();
 
+            String hno = request.getParameter("hno");
+            System.out.println("hnohno:" + hno);
+            homework = hd.select(hno);
+
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd-hh:ss");
+
+            String content = request.getParameter("hcontent");
+            if (content != null && !content.equals("")) {
+                homework.setHcontent(content);
+            }
+
+
+            String begin = request.getParameter("beginTime");
+            Date beginTime = null;
+            if (begin != null && !begin.equals("")) {
+                begin = begin.replace("T", "-");
+                System.out.println(begin);
+                try {
+                    beginTime = new Date(format.parse(begin).getTime());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                homework.setBeginTime(beginTime);
+            }
+
+            String end = request.getParameter("endTime");
+            Date endTime = null;
+            if (end != null && !end.equals("")) {
+                end = end.replace("T", "-");
+                System.out.println(end);
+                try {
+                    endTime = new Date(format.parse(end).getTime());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                homework.setEndTime(endTime);
+            }
+            System.out.println("a:" + content);
+            System.out.println("a:" + beginTime);
+            System.out.println("a:" + endTime);
+            System.out.println("a:" + homework.getHcontent());
+            System.out.println("hno:" + homework.getHno());
+            System.out.println("a:" + endTime);
             hd.update(homework);
+            response.sendRedirect("html/publish3.html");
+        } else {
+            response.sendRedirect("html/index.html");
         }
-        response.sendRedirect("html/publish.html");
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
