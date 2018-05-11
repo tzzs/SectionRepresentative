@@ -6,7 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39323035-4222-4397-87c6-fef6656ebe2a" name="Default" comment="" />
+    <list default="true" id="39323035-4222-4397-87c6-fef6656ebe2a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -86,7 +88,7 @@
       <file leaf-file-name="search.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/JS/search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
+            <state relative-caret-position="104">
               <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
             </state>
           </provider>
@@ -591,7 +593,7 @@
       <workItem from="1525935250207" duration="23834000" />
       <workItem from="1525966206841" duration="3991000" />
       <workItem from="1526018810465" duration="18302000" />
-      <workItem from="1526041614282" duration="784000" />
+      <workItem from="1526041614282" duration="793000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1524569360753</created>
@@ -898,7 +900,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197064000" />
+    <option name="totallyTimeSpent" value="197073000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -911,7 +913,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
@@ -1397,7 +1398,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/JS/search.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
+        <state relative-caret-position="104">
           <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
         </state>
       </provider>
