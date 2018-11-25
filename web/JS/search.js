@@ -3,25 +3,26 @@ function serarch(hno) {
         type: "GET", //请求方式
         url: "/searchServlet",//请求路径
         cache: false,
-
         //传参
         data: "hno=" + hno,
         dataType: 'json',//返回值类型
         success: function (json) {
-            var s = "";
+            alert('123');
+            var k = "";
             for (var i in json) {
                 var url = "/uploadServlet?hno=" + json[i].hno;
-                s = s + "<tr><th>" + json[i].hno + "</th>" +
+                k = k + "<tr><th>" + json[i].hno + "</th>" +
                     "<th>" + json[i].hcontent + "</th>" +
-                    "<th><a href=\"/hfileDownloadServlet?hno=" + json[i].hno + "&hfile=" + json[i].hfile + "\">" + json[i].hfile +
-                    "<th>" + DateFormat(json[i].beginTime) + "</th>" +
-                    "<th>" + DateFormat(json[i].endTime) + "</th>" +
-                    "<th><input type=\"button\" onclick=\"update('" + json[i].hno + "')\" value=\"修改\"></th>" +//修改
-                    "<th><input type=\"button\" onclick=\"download('" + json[i].hno + "')\" value=\"下载\"></th>" +//下载
-                    "<th><input type=\"button\" onclick=\"delet('" + json[i].hno + "')\" value=\"删除\"></th>" +//删除
+                    "<th>" + ChangeDateFormat(json[i].beginTime) + "</th>" +
+                    "<th>" + ChangeDateFormat(json[i].endTime) + "</th>" +
+                    "<th><a href=\"/hfileDownloadServlet?hno=" + json[i].hno + "&hfile=" + json[i].hfile + "\">" + json[i].hfile + "</a></th>" +
+                    "<th><form action=" + url + " id=\"uploadFile" + i + "\" enctype=\"multipart/form-data\" method=\"post\">" +
+                    "<input type=\"file\" id= file" + i + " name=\"filename\" value=\"选择文件\"></form></th>" +
+                    "<th><input type=\"button\" onclick=\"submit(" + i + ")\" value=\"提交\"></th>" +
                     "</tr>";
             }
-            document.getElementById("homework").insertAdjacentHTML("beforeend", s);// = s
+            alert(k);
+            document.getElementById("homework").insertAdjacentHTML("beforeend", k);// = s
         },
         error: function () {
             alert("error,查询失败...");//弹出返回过来的List对象
@@ -52,16 +53,4 @@ function DateFormat(d) {
 
     //getFullYear得到4位数的年份 ，返回一串字符串
     return date.getFullYear() + "-" + month + "-" + currentDate + " " + hour + ":" + minute;
-}
-
-function update(hno) {
-    window.location.href = "update.html?hno=" + hno;
-}
-
-function download(hno) {
-    window.location.href = "/downloadZipServlet?hno=" + hno;
-}
-
-function delet(hno) {
-    window.location.href = "/deleteHomeworkServlet?hno=" + hno;
 }

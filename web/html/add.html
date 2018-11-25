@@ -61,8 +61,6 @@
       <a class="list_img" id="list1" href="javascript:"><img src="../img/list1.png"><span>列表</span></a>
       <div class="list_dd" id="list_fun1">
         <ul>
-          <li class="list_li"><a href="index.html">登录</a></li>
-          <li class="list_li"><a href="register.html">注册</a></li>
           <li class="list_li"><a href="main.html">首页</a></li>
           <li class="list_li"><a href="publish.html">公告</a></li>
           <li class="list_li"><a href="my.html">我的作业</a></li>
@@ -130,19 +128,7 @@
             Oconin.style.height = len2 + 'px';
         }
     }
-
-    // function test() {
-    //     $.ajax({
-    //         type: "POST", //请求方式m
-    //         url: "/myAttention",//请求路径
-    //         cache: false,
-    //         data: "",//传参
-    //         dataType: 'json',//返回值类型
-    //         success: function (json) {
-    //             alert(json[0])
-    //         }
-    //     });
-    // }
+    window.onresize = oncreate;
 
     function btnAction() {
         $.ajax({

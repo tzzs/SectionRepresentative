@@ -112,8 +112,8 @@
             <th>开始时间</th>
             <th>结束时间</th>
             <th>修改</th>
-            <th>删除</th>
             <th>下载</th>
+            <th>删除</th>
           </tr>
         </table>
       </div>
@@ -160,39 +160,17 @@
         }
         if (len >= 400) {
 
-            len1 = len + 95;
-            len2 = len + 135;
+            len1 = len + 85;
+            len2 = len + 125;
             Ocon.style.height = len1 + 'px';
             Oconin.style.height = len2 + 'px';
         }
     }
-
-    // var t = document.getElementById("table");
-    // var rows = t.getElementsByTagName("input");
-    // var oXIU = document.getElementById("xiugai");
-    // var oDIV = document.getElementById("div4");
-    // //给tr绑定click事件
-    // for (var i in rows) {
-    //     rows[i].onclick = rowClick;
-    // }
-    //
-    // function rowClick(e) {
-    //     var number = 0;
-    //     for (var j = 0; j < rows.length; j++) {
-    //         if (rows[j] === this) {
-    //             number = j + 1;
-    //         }
-    //     }
-    //     if (number !== 0) {
-    //         oXIU.style.display = 'block';
-    //         oDIV.style.display = 'none';
-    //     }
-    // }
-
+    window.onresize = oncreate;
     function show() {
         $.ajax({
             type: "GET", //请求方式
-            url: "/myHomeworkServlet",//请求路径
+            url: "/myPublishServlet",//请求路径
             cache: false,
 
             //传参
@@ -203,7 +181,8 @@
                     var url = "/uploadServlet?hno=" + json[i].hno;
                     s = s + "<tr><th>" + json[i].hno + "</th>" +
                         "<th>" + json[i].hcontent + "</th>" +
-                        "<th>" + json[i].hfile + "</th>" +
+                        // "<th>" + json[i].hfile + "</th>" +
+                        "<th><a href=\"/com.zt.sr.service.hfileDownloadServlet?hno=" + json[i].hno + "&hfile=" + json[i].hfile + "\">" + json[i].hfile + "</a></th>" +
                         "<th>" + DateFormat(json[i].beginTime) + "</th>" +
                         "<th>" + DateFormat(json[i].endTime) + "</th>" +
                         // "<th>" + json[i].beginTime + "</th>" +
@@ -214,10 +193,6 @@
                         "</tr>";
                 }
                 document.getElementById("table").insertAdjacentHTML("beforeend", s);// = s
-            },
-            error: function () {
-                alert("error,未登录状态，确认后跳转登录...");//弹出返回过来的List对象
-                self.location = "index.html";
             }
         });
     }

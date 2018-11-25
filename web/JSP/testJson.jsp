@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: tzz
+  com.zt.sr.pojo.User: tzz
   Date: 2018/5/1
   Time: 19:51
   To change this template use File | Settings | File Templates.
@@ -17,7 +17,7 @@
             alert("aa");
             $.ajax({
                 type: "POST", //请求方式
-                url: "/myHomeworkServlet",//请求路径
+                url: "/com.zt.sr.controller.myHomeworkServlet",//请求路径
                 cache: false,
                 data: "",//传参
                 dataType: 'json',//返回值类型

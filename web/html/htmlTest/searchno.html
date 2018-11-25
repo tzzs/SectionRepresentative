@@ -77,12 +77,6 @@
       <div class="list_dd" id="list_fun1">
         <ul>
           <li class="list_li">
-            <a href="index.html">登录</a>
-          </li>
-          <li class="list_li">
-            <a href="register.html">注册</a>
-          </li>
-          <li class="list_li">
             <a href="main.html">首页</a>
           </li>
           <li class="list_li">
@@ -160,6 +154,7 @@
 			Oconin.style.height = len2+'px';
 		}
 	}
+  window.onresize = oncreate;
 function ReadCookie(cookieName) {
     var theCookie = "" + document.cookie;
     var ind = theCookie.indexOf(cookieName);

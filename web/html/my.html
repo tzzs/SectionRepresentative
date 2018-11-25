@@ -79,12 +79,6 @@
       <div class="list_dd" id="list_fun1">
         <ul>
           <li class="list_li">
-            <a href="index.html">登录</a>
-          </li>
-          <li class="list_li">
-            <a href="register.html">注册</a>
-          </li>
-          <li class="list_li">
             <a href="main.html">首页</a>
           </li>
           <li class="list_li">
@@ -152,22 +146,21 @@
                           "<th>" + json[i].hcontent + "</th>" +
                           "<th>" + ChangeDateFormat(json[i].beginTime) + "</th>" +
                           "<th>" + ChangeDateFormat(json[i].endTime) + "</th>" +
-                          "<th><a href=\"/hfileDownloadServlet?hno=" + json[i].hno + "&hfile=" + json[i].hfile + "\">" + json[i].hfile + "</a></th>" +
+                          "<th><a href=\"/com.zt.sr.service.hfileDownloadServlet?hno=" + json[i].hno + "&hfile=" + json[i].hfile + "\">" + json[i].hfile + "</a></th>" +
                           "<th><form action=" + url + " id=\"uploadFile" + i + "\" enctype=\"multipart/form-data\" method=\"post\">" +
                           "<input type=\"file\" id= file" + i + " name=\"filename\" value=\"选择文件\"></form></th>" +
                           "<th><input type=\"button\" onclick=\"submit(" + i + ")\" value=\"提交\"></th>" +
                           "</tr>";
                   }
                   document.getElementById("hometr").insertAdjacentHTML("afterend", s);// = s
-                  oBody.innerHTML = s;
                   //弹出返回过来的List对象
-                  J = json;
-              },
-              error: function () {
-                  // alert(json);
-                  alert("error,未登录状态，确认后跳转登录...");//弹出返回过来的List对象
-                  self.location = "index.html";
+                  // J = json;
               }
+              // error: function () {
+              //     // alert(json);
+              //     alert("error,未登录状态，确认后跳转登录...");//弹出返回过来的List对象
+              //     self.location = "index.html";
+              // }
           });
       }
 
@@ -192,8 +185,12 @@
           //日期为个位数时在前面+0
           var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
 
+          //时间
+          var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+          var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+
           //getFullYear得到4位数的年份 ，返回一串字符串
-          return date.getFullYear() + "-" + month + "-" + currentDate;
+          return date.getFullYear() + "-" + month + "-" + currentDate + " " + hour + ":" + minute;
       }
 
       window.onload = add;
@@ -213,6 +210,7 @@
               Oconin.style.height = len2 + 'px';
           }
       }
+      window.onresize = oncreate;
   </script>
 </body>
 
