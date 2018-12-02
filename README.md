@@ -35,6 +35,12 @@
 
     > 作业文件压缩打包下载
 
+## 数据库
+
+版本：MySql 5.7
+
+SQL：/web/sql/sectionRepresentative.sql
+
 ## 项目文件关联
 
 ![FA9naT.jpg](https://s1.ax1x.com/2018/11/26/FA9naT.jpg)
