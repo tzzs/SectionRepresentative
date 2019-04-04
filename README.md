@@ -2,7 +2,6 @@
 课代表作业系统
 
 
-![continuousphp](https://img.shields.io/continuousphp/git-hub/doctrine/dbal/master.svg)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 
